@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Intro
+This is web-app created by rails-5.1 and vue.js with webpacker.
 
-Things you may want to cover:
+## Build Set up
 
-* Ruby version
+```
+# install dependencies
+bundle install
 
-* System dependencies
+# build js assets
+rails webpack
 
-* Configuration
+# serve without hot reload
+rails s
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# serve with hot reload
+bin/serve
+```
