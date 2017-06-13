@@ -17,4 +17,11 @@ rails s
 
 # serve with hot reload
 bin/serve
+
+# test
+bin/rails test
+
+# system test
+bin/rails test:system
+
 ```
