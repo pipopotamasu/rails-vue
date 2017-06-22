@@ -13,7 +13,7 @@
 </template>
 
 <script>
-const apiURL = 'http://localhost:5000/grids/grid_user';
+import axios from 'axios'
 
 export default {
   template: '#grid-app',
@@ -21,24 +21,17 @@ export default {
     return {
       searchQuery: '',
       gridColumns: ['name', 'power'],
-      gridData: [
-        { name: 'Chuck Norris', power: Infinity },
-        { name: 'Bruce Lee', power: 9000 },
-        { name: 'Jackie Chan', power: 7000 },
-        { name: 'Jet Li', power: 8000 }
-      ]
+      gridData: []
     }
   },
   methods: {
     fetchData: function() {
-      var xhr = new XMLHttpRequest();
-      var self = this;
-      xhr.open('GET', apiURL);
-      xhr.onload = function () {
-        console.log(xhr.responseText)
-        self.gridData = JSON.parse(xhr.responseText)
-      }
-      xhr.send()
+      let self = this;
+      axios.get('/grids/grid_user').then((response) => {
+        self.gridData = response.data
+      }).catch((e) => {
+        console.log(e)
+      });
     }
   },
   created: function() {
