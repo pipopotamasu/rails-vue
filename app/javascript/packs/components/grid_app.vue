@@ -13,6 +13,7 @@
 </template>
 
 <script>
+const apiURL = 'http://localhost:5000/grids/grid_user';
 
 export default {
   template: '#grid-app',
@@ -27,6 +28,21 @@ export default {
         { name: 'Jet Li', power: 8000 }
       ]
     }
-  }
+  },
+  methods: {
+    fetchData: function() {
+      var xhr = new XMLHttpRequest();
+      var self = this;
+      xhr.open('GET', apiURL);
+      xhr.onload = function () {
+        console.log(xhr.responseText)
+        self.gridData = JSON.parse(xhr.responseText)
+      }
+      xhr.send()
+    }
+  },
+  created: function() {
+    this.fetchData();
+  },
 }
 </script>
