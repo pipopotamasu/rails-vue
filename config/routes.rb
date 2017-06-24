@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :todos do
     collection do
-      get 'grid_user'
+      get 'all'
     end
   end
 

@@ -6,6 +6,7 @@
       <li v-for="todo in todos">
         <input v-model="todo.checked"type="checkbox" v-bind:id="'todo-' + todo.id" />
         <label v-bind:class="{ done: todo.checked }" v-bind:for="'todo-' + todo.id">{{ todo.body }}</label>
+        <span v-on:click="deleteTodo(todo.id)" class="delete">[×]</span>
       </li>
     </ul>
     <!-- <form id="search">
@@ -35,11 +36,14 @@ export default {
       todos: [],
     }
   },
+  created: function() {
+    this.fetchData();
+  },
   methods: {
     addTodo: function() {
       if(this.input == 0) return false;
       this.createTodo(this.input);
-      this.todos.push({id: this.todos.length + 1, body: this.input, checked: false});
+      this.fetchData();
       this.input = '';
     },
     createTodo: function(input) {
@@ -51,6 +55,24 @@ export default {
         console.log(e);
       });
     },
+    deleteTodo: function(id) {
+      axios.delete('/todos/' + id, {
+        id: id
+      }).then((response) => {
+        this.fetchData();
+        console.log(response);
+      }).catch((e) => {
+        console.log(e);
+      });
+    },
+    fetchData: function() {
+      let self = this;
+      axios.get('/todos/all').then((response) => {
+        self.todos = response.data
+      }).catch((e) => {
+        console.log(e)
+      });
+    },
   }
 }
 </script>
@@ -58,5 +80,9 @@ export default {
 <style scoped>
 .done {
   text-decoration: line-through
+}
+
+.delete {
+  cursor: pointer;
 }
 </style>

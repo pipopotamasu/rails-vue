@@ -7,6 +7,15 @@ class TodosController < ApplicationController
     render json: :created
   end
 
+  def destroy
+    Todo.find(params[:id]).destroy
+    render json: :deleted
+  end
+
+  def all
+    render json: Todo.all
+  end
+
   private
 
   def todo_params
