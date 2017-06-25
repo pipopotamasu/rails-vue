@@ -39,12 +39,13 @@ export default {
   methods: {
     addTodo: function() {
       if(this.input == 0) return false;
-      this.createTodo(this.input);
-      this.fetchData();
+      this.createTodo(this.input).then(() => {
+        this.fetchData();
+      });
       this.input = '';
     },
     createTodo: function(input) {
-      axios.post('/todos', {
+      return axios.post('/todos', {
         body: input
       }).then((response) => {
         console.log(response);
