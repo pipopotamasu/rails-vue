@@ -29,6 +29,7 @@
     "style-loader": "^0.18.2",
     "vue": "^2.3.4",
     "vue-loader": "^12.2.1",
+    "vue-router": "^2.6.0",
     "vue-sortable": "git://github.com/MunGell/vue-sortable#77c26994",
     "vue-template-compiler": "^2.3.4",
     "webpack": "^2.6.1",
