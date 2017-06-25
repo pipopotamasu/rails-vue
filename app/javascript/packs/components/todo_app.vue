@@ -2,7 +2,7 @@
 <template>
   <div id="todo-app">
     <input v-model="input" type="text" size="20"/><button v-on:click="addTodo">Submit</button>
-    <ul>
+    <ul class="list-group" v-sortable>
       <template v-for="todo in todos">
         <todo
           :todo="todo"

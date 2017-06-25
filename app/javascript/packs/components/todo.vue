@@ -1,6 +1,6 @@
 <!-- demo root element -->
 <template>
-  <li>
+  <li class="list-group-item">
     <input v-model="todo.checked"type="checkbox" v-bind:id="'todo-' + todo.id" />
     <label v-bind:class="{ done: todo.checked }" v-bind:for="'todo-' + todo.id">{{ todo.body }}</label>
     <span v-on:click="deleteTodo(todo.id)" class="delete">[×]</span>
