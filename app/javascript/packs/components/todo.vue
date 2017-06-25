@@ -42,7 +42,7 @@ export default {
   text-decoration: line-through
 }
 
-.delete {
+li {
   cursor: pointer;
 }
 </style>

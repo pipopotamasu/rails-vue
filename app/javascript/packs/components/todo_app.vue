@@ -2,7 +2,7 @@
 <template>
   <div id="todo-app">
     <input v-model="input" type="text" size="20"/><button v-on:click="addTodo">Submit</button>
-    <ul class="list-group" v-sortable>
+    <ul class="list-group" v-sortable="options">
       <template v-for="todo in todos">
         <todo
           :todo="todo"
@@ -27,6 +27,10 @@ export default {
     return {
       input: '',
       todos: [],
+      options: {
+        animation: 500,
+        onSort: this.sorted
+      }
     }
   },
   created: function() {
@@ -56,6 +60,9 @@ export default {
         console.log(e)
       });
     },
+    sorted: function() {
+      console.log('sorted');
+    }
   }
 }
 </script>
