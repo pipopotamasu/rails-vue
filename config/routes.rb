@@ -10,5 +10,7 @@ Rails.application.routes.draw do
       get 'grid_user'
     end
   end
-  root to: 'grids#index'
+
+  get '/home', to: 'home#index'
+  root to: 'home#index'
 end
