@@ -5,8 +5,6 @@ import Grid from './components/grid.vue'
 import GridApp from './components/grid_app.vue'
 import Todo from './components/todo.vue'
 import TodoApp from './components/todo_app.vue'
-import Counter from './components/counter.vue'
-import store from './store/counter.js';
 
 Vue.use(VueRouter)
 Vue.use(Sortable)
@@ -17,8 +15,7 @@ Vue.component('todo', Todo)
 
 const routes = [
   { path: '/grid', component: GridApp },
-  { path: '/todo', component: TodoApp },
-  { path: '/counter', component: Counter }
+  { path: '/todo', component: TodoApp }
 ]
 
 const router = new VueRouter({
@@ -27,7 +24,6 @@ const router = new VueRouter({
 
 // bootstrap the demo
 var app = new Vue({
-  store,
   el: '#app',
   router
 })
