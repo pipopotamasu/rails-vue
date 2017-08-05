@@ -12,8 +12,8 @@
 
 <script>
 import { mapState,mapActions,mapGetters } from 'vuex'
-import * as types from '../actions/mutation-types';
-import Item from './todo_vuex.vue'
+import * as types from '../../store/actions/mutation-types';
+import Item from './todo.vue'
 
 export default {
     name: 'todo',

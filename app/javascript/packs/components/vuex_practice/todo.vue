@@ -4,7 +4,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import * as types from '../actions/mutation-types';
+import * as types from '../../store/actions/mutation-types';
 
 export default {
     props: ['item'],

@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Counter from './components/counter.vue'
-import TodoApp from './components/todo_app_vuex.vue'
-import store from './store';
+import Counter from './components/vuex_practice/counter.vue'
+import TodoApp from './components/vuex_practice/todo_app.vue'
+import store from './store/vuex_practice';
 
 Vue.use(VueRouter)
 
