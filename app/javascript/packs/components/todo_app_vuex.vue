@@ -1,11 +1,11 @@
 <template>
   <div id="todo">
       <ul>
-          <item v-for="item in items" :item="item" :key="item.id"></item>
+          <item v-for="todo in todos" :item="todo" :key="todo.id"></item>
       </ul>
       <div>
           <input type="text" v-model="inputTitle">
-          <button @click="ADD_TASK(inputTitle)">追加</button>
+          <button @click="ADD_TASK(inputTitle), resetInput()">追加</button>
       </div>
   </div>
 </template>
@@ -18,20 +18,25 @@ import Item from './todo_vuex.vue'
 export default {
     name: 'todo',
     components: {
-        Item
+      Item
     },
     data () {
-        return {
-            inputTitle: ""
-        }
+      return {
+          inputTitle: ""
+      }
     },
     computed: {
-        ...mapState(['items'])
+      // share store state
+      ...mapState(['todos'])
     },
     methods: {
-        ...mapActions([
-            types.ADD_TASK
-        ]),
+      // share store action
+      ...mapActions([
+          types.ADD_TASK
+      ]),
+      resetInput: function() {
+        this.inputTitle = ''
+      },
     }
 }
 </script>
