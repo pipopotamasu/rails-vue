@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :vuexes
+
   get '/home', to: 'home#index'
   root to: 'home#index'
 end
