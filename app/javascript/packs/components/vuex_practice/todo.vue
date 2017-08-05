@@ -7,12 +7,12 @@ import { mapActions } from 'vuex'
 import * as types from '../../store/actions/mutation-types';
 
 export default {
-    props: ['item'],
-    methods: {
-      ...mapActions([
-          types.DONE_TASK
-      ])
-    }
+  props: ['item'],
+  methods: {
+    ...mapActions([
+        types.DONE_TASK
+    ])
+  }
 }
 </script>
 
