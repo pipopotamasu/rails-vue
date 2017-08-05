@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapState,mapActions } from 'vuex'
+import { mapState,mapActions,mapGetters } from 'vuex'
 import * as types from '../actions/mutation-types';
 import Item from './todo_vuex.vue'
 
@@ -27,7 +27,8 @@ export default {
     },
     computed: {
       // share store state
-      ...mapState(['todos'])
+      ...mapState(['todos']),
+      // ...mapGetters(['nextId'])
     },
     methods: {
       // share store action

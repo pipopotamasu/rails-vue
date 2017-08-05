@@ -8,21 +8,42 @@ export default new Vuex.Store({
   state: {
     count: 0,
     todos: [
-        { id: 1, is_do: false, title: 'タスク1'},
-        { id: 2, is_do: true, title: 'タスク2'},
-        { id: 3, is_do: false, title: 'タスク3'}
+      { id: 1, is_do: false, title: 'タスク1'},
+      { id: 2, is_do: true, title: 'タスク2'},
+      { id: 3, is_do: false, title: 'タスク3'}
     ],
   },
+  getters: {
+    nextId: (state, getters) => {
+      let maxId = 0;
+      state.todos.forEach((todo) => {
+        if(todo.id > maxId) maxId = todo.id;
+      });
+      return ++maxId;
+    }
+  },
   actions: {
-    [types.ADD_TASK] ({ commit }, title) {
-        let newItem = {
-            title: title,
-            is_do: false,
-        }
-        commit({
-            type: types.ADD_TASK,
-            data: newItem
-        })
+    // [types.ADD_TASK] (context, title) { // context has getters, state, commit, dispatch, rootGetters
+    //   let newTodo = {
+    //     id: context.getters.nextId,
+    //     title: title,
+    //     is_do: false,
+    //   }
+    //   context.commit({
+    //       type: types.ADD_TASK,
+    //       data: newTodo
+    //   })
+    // },
+    [types.ADD_TASK] ({ commit, getters }, title) {
+      let newTodo = {
+        id: getters.nextId,
+        title: title,
+        is_do: false,
+      }
+      commit({
+          type: types.ADD_TASK,
+          data: newTodo
+      })
     },
     [types.DONE_TASK] ({ commit }, item) {
         item.is_do = !item.is_do
@@ -34,8 +55,7 @@ export default new Vuex.Store({
   },
   mutations: {
     [types.ADD_TASK] (state, payload) { // payload・・・nimotsu
-      const todo = Object.assign(payload.data, { id: state.todos.length })
-      state.todos.push(todo);
+      state.todos.push(payload.data);
     },
     [types.DONE_TASK] (state, payload) {
       state.todos[payload.data.id] = payload.data
