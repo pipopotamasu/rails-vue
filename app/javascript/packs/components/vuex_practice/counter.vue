@@ -1,33 +1,28 @@
 <template>
   <div id='counter'>
-    <p class="counter__display">{{ count }}</p>
+    <p class="counter__display">{{ counter.count }}</p>
     <div class="counter__buttons">
-      <button class="button counter__increment" @click="increment">+</button>
-      <button class="button counter__decrement" @click="decrement">-</button>
-      <button class="button counter__reset" @click="reset">reset</button>
+      <button class="button counter__increment" @click="INCREMENT()">+</button>
+      <button class="button counter__decrement" @click="DECREMENT()">-</button>
+      <button class="button counter__reset" @click="RESET()">reset</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
+import * as types from '../../store/actions/counter-mutation-types';
 
 export default {
-  template: '#counter',
   computed: {
-    count () {
-      return this.$store.state.counter.count;
-    }
+    ...mapState(['counter']),
   },
   methods: {
-    increment() {
-      this.$store.commit('increment');
-    },
-    decrement() {
-      this.$store.commit('decrement');
-    },
-    reset() {
-      this.$store.commit('reset');
-    }
+    ...mapActions([
+        types.INCREMENT,
+        types.DECREMENT,
+        types.RESET,
+    ])
   }
 }
 </script>

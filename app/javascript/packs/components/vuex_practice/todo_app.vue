@@ -1,7 +1,7 @@
 <template>
   <div id="todo">
       <ul>
-          <item v-for="todo in todo.todos" :item="todo" :key="todo.id"></item>
+          <todo v-for="todo in todo.todos" :todo="todo" :key="todo.id"></todo>
       </ul>
       <div>
           <input type="text" v-model="inputTitle">
@@ -12,7 +12,7 @@
 
 <script>
 import { mapState,mapActions,mapGetters } from 'vuex'
-import * as types from '../../store/actions/mutation-types';
+import * as types from '../../store/actions/todo-mutation-types';
 import Todo from './todo.vue'
 
 export default {
