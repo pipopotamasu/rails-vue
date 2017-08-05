@@ -1,7 +1,7 @@
 <template>
   <div id="todo">
       <ul>
-          <item v-for="todo in todos" :item="todo" :key="todo.id"></item>
+          <item v-for="todo in todo.todos" :item="todo" :key="todo.id"></item>
       </ul>
       <div>
           <input type="text" v-model="inputTitle">
@@ -27,7 +27,7 @@ export default {
     },
     computed: {
       // share store state
-      ...mapState(['todos']),
+      ...mapState(['todo']),
       // ...mapGetters(['nextId'])
     },
     methods: {
