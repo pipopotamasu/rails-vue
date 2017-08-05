@@ -25,7 +25,7 @@
 <script>
 
 export default {
-  template: '#grid-template',
+  // template: '#grid-template',
   props: {
     data: Array,
     columns: Array,
