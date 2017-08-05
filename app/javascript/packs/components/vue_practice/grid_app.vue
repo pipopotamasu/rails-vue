@@ -14,9 +14,13 @@
 
 <script>
 import axios from 'axios'
+import Grid from './grid.vue'
 
 export default {
-  template: '#grid-app',
+  // template: '#grid-app', // Whichever's good to have template option for component.
+  components: {
+    Grid
+  },
   data: function () {
     return {
       searchQuery: '',

@@ -15,6 +15,7 @@
 
 <script>
 import axios from 'axios'
+import Todo from './todo.vue'
 
 // set csrf token by getting that from dom.
 let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
@@ -22,7 +23,10 @@ axios.defaults.headers.common['X-CSRF-Token'] = token
 axios.defaults.headers.common['Accept'] = 'application/json'
 
 export default {
-  template: '#todo-app',
+  // template: '#todo-app',
+  components: {
+    Todo
+  },
   data: function () {
     return {
       input: '',

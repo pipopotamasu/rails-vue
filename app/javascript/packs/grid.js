@@ -5,10 +5,8 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue'
-import Grid from './components/vue_practice/grid.vue'
 import GridApp from './components/vue_practice/grid_app.vue'
 
-Vue.component('grid', Grid)
 Vue.component('grid-app', GridApp)
 
 // bootstrap the demo

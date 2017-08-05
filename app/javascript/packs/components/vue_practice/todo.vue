@@ -16,7 +16,7 @@ axios.defaults.headers.common['X-CSRF-Token'] = token
 axios.defaults.headers.common['Accept'] = 'application/json'
 
 export default {
-  template: '#todo-app',
+  // template: '#todo-app',
   props: {
     todo: Object,
     fetchData: Function,
