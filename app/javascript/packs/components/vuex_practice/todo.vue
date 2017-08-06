@@ -1,5 +1,8 @@
 <template>
-    <li v-bind:class="{ 'done': todo.checked }" @click="DONE_TASK(todo)">{{ todo.body }}</li>
+    <li v-bind:class="{ 'done': todo.checked }" @click="DONE_TASK(todo)">
+      {{ todo.body }}
+      <span @click="DELETE_TASK(todo)" class="delete">[×]</span>
+    </li>
 </template>
 
 <script>
@@ -10,7 +13,8 @@ export default {
   props: ['todo'],
   methods: {
     ...mapActions([
-        types.DONE_TASK
+        types.DONE_TASK,
+        types.DELETE_TASK
     ])
   }
 }

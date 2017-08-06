@@ -53,7 +53,6 @@ export default {
     },
     [types.FETCH_TODOS] ({ commit }) {
       axios.get('/todos/all').then((response) => {
-        console.log(response.data);
         commit({
             type: types.FETCH_TODOS,
             data: response.data
@@ -61,7 +60,19 @@ export default {
       }).catch((e) => {
         console.log(e)
       });
-    }
+    },
+    [types.DELETE_TASK] ({ commit }, todo) {
+      axios.delete('/todos/' + todo.id, {
+        id: todo.id
+      }).then((response) => {
+        commit({
+            type: types.DELETE_TASK,
+            data: todo
+        })
+      }).catch((e) => {
+        console.log(e);
+      });
+    },
   },
   mutations: {
     [types.ADD_TASK] (state, payload) { // payload・・・nimotsu
@@ -76,6 +87,13 @@ export default {
     },
     [types.FETCH_TODOS] (state, payload) {
       state.todos = payload.data;
+    },
+    [types.DELETE_TASK] (state, payload) {
+      state.todos.forEach((todo, i) => {
+        if(todo.id === payload.data.id) {
+          state.todos.splice(i, 1);
+        }
+      });
     },
   }
 };
