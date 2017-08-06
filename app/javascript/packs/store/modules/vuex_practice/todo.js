@@ -1,12 +1,9 @@
 import * as types from '../../actions/todo-mutation-types'
+import axios from 'axios'
 
 export default {
   state: {
-    todos: [
-      { id: 1, is_do: false, title: 'タスク1'},
-      { id: 2, is_do: true, title: 'タスク2'},
-      { id: 3, is_do: false, title: 'タスク3'}
-    ],
+    todos: [],
   },
   getters: {
     nextId: (state, getters) => {
@@ -40,12 +37,23 @@ export default {
           data: newTodo
       })
     },
-    [types.DONE_TASK] ({ commit }, item) {
-      item.is_do = !item.is_do
+    [types.DONE_TASK] ({ commit }, todo) {
+      todo.checked = !todo.checked
       commit({
           type: types.DONE_TASK,
-          data: item
+          data: todo
       })
+    },
+    [types.FETCH_TODOS] ({ commit }) {
+      axios.get('/todos/all').then((response) => {
+        console.log(response.data);
+        commit({
+            type: types.FETCH_TODOS,
+            data: response.data
+        })
+      }).catch((e) => {
+        console.log(e)
+      });
     }
   },
   mutations: {
@@ -58,6 +66,9 @@ export default {
           state.todos[i] = payload.data
         }
       });
+    },
+    [types.FETCH_TODOS] (state, payload) {
+      state.todos = payload.data;
     },
   }
 };

@@ -1,5 +1,5 @@
 <template>
-    <li v-bind:class="{ 'done': todo.is_do }" @click="DONE_TASK(todo)">{{ todo.title }}</li>
+    <li v-bind:class="{ 'done': todo.checked }" @click="DONE_TASK(todo)">{{ todo.body }}</li>
 </template>
 
 <script>

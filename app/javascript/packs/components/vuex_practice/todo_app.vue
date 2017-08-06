@@ -5,7 +5,7 @@
       </ul>
       <div>
           <input type="text" v-model="inputTitle">
-          <button @click="ADD_TASK(inputTitle), resetInput()">追加</button>
+          <button @click="ADD_TASK(inputTitle), resetInput()">Submit</button>
       </div>
   </div>
 </template>
@@ -24,6 +24,9 @@ export default {
         inputTitle: ""
     }
   },
+  created: function() {
+    this.FETCH_TODOS();
+  },
   computed: {
     // share store state
     ...mapState(['todo']),
@@ -32,7 +35,8 @@ export default {
   methods: {
     // share store action
     ...mapActions([
-        types.ADD_TASK
+        types.ADD_TASK,
+        types.FETCH_TODOS
     ]),
     resetInput: function() {
       this.inputTitle = ''
