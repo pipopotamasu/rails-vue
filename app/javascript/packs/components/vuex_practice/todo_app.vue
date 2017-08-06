@@ -4,8 +4,8 @@
           <todo v-for="todo in todo.todos" :todo="todo" :key="todo.id"></todo>
       </ul>
       <div>
-          <input type="text" v-model="inputTitle">
-          <button @click="ADD_TASK(inputTitle), resetInput()">Submit</button>
+          <input type="text" v-model="inputBody">
+          <button @click="ADD_TASK(inputBody), resetInput()">Submit</button>
       </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
   },
   data () {
     return {
-        inputTitle: ""
+        inputBody: ""
     }
   },
   created: function() {
@@ -39,7 +39,7 @@ export default {
         types.FETCH_TODOS
     ]),
     resetInput: function() {
-      this.inputTitle = ''
+      this.inputBody = ''
     },
   }
 }

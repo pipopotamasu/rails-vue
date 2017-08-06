@@ -1,6 +1,11 @@
 import * as types from '../../actions/todo-mutation-types'
 import axios from 'axios'
 
+// set csrf token by getting that from dom.
+let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
+axios.defaults.headers.common['X-CSRF-Token'] = token
+axios.defaults.headers.common['Accept'] = 'application/json'
+
 export default {
   state: {
     todos: [],
@@ -15,27 +20,29 @@ export default {
     }
   },
   actions: {
-    // [types.ADD_TASK] (context, title) { // context has getters, state, commit, dispatch, rootGetters
+    // NOTE: Sync ADD_TASK
+    // [types.ADD_TASK] (context, body) { // context has getters, state, commit, dispatch, rootGetters
     //   let newTodo = {
     //     id: context.getters.nextId,
-    //     title: title,
-    //     is_do: false,
+    //     body: body,
+    //     checked: false,
     //   }
     //   context.commit({
     //       type: types.ADD_TASK,
     //       data: newTodo
     //   })
     // },
-    [types.ADD_TASK] ({ commit, getters }, title) {
-      let newTodo = {
-        id: getters.nextId,
-        title: title,
-        is_do: false,
-      }
-      commit({
+    [types.ADD_TASK] ({ commit, getters}, body) {
+      axios.post('/todos', {
+        body: body
+      }).then((response) => {
+        commit({
           type: types.ADD_TASK,
-          data: newTodo
-      })
+          data: response.data
+        })
+      }).catch((e) => {
+        console.log(e);
+      });
     },
     [types.DONE_TASK] ({ commit }, todo) {
       todo.checked = !todo.checked
