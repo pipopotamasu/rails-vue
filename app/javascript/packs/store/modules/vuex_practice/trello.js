@@ -55,6 +55,7 @@ export default {
         if(list.id === payload.data.id) {
           // don't insert object to array like below
           // ex) state.lists[i] = payload.data
+          // components life cycle do not work if you do so.
           state.lists.splice(i, 1, payload.data);
         }
       });
