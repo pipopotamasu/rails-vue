@@ -3,8 +3,8 @@
       <div class="panel panel-default">
         <div class="panel-heading strong">
           <!-- somehow focus and blur event does not work. -->
-          <input v-if="editing" @keyup.enter="doneEdit" type="text" v-model="inputTitle">
-          <span v-else @click="onEditing">{{ list.title }}</span>
+          <input v-show="editing" @keyup.enter="doneEdit" type="text" :value="list.title">
+          <span v-show="!editing" @click="onEditing">{{ list.title }}</span>
         </div>
         <div class="panel-body text-right">コンテンツ</div>
       </div>
@@ -19,21 +19,19 @@ export default {
   props: ['list'],
   data () {
     return {
-        inputTitle: this.list.title,
         editing: false
     }
   },
   methods: {
     ...mapActions([
-        types.EDIT_LIST_TITLE,
+        types.UPDATE_LIST,
     ]),
     onEditing: function() {
-      console.log(this.list)
       this.editing = true
     },
-    doneEdit: function() {
+    doneEdit: function(e) {
       this.editing = false
-      this.EDIT_LIST_TITLE({ id :this.list.id, order: this.list.order, title: this.inputTitle });
+      this.UPDATE_LIST({ id :this.list.id, order: this.list.order, title: e.target.value });
     },
   }
 }

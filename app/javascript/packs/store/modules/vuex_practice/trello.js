@@ -39,10 +39,10 @@ export default {
           data: newList
       });
     },
-    [types.EDIT_LIST_TITLE] ({ commit }, newTodo) {
+    [types.UPDATE_LIST] ({ commit }, newList) {
       commit({
-          type: types.EDIT_LIST_TITLE,
-          data: newTodo
+          type: types.UPDATE_LIST,
+          data: newList
       });
     },
   },
@@ -50,10 +50,12 @@ export default {
     [types.ADD_LIST] (state, payload) {
       state.lists.push(payload.data);
     },
-    [types.EDIT_LIST_TITLE] (state, payload) {
+    [types.UPDATE_LIST] (state, payload) {
       state.lists.forEach((list, i) => {
         if(list.id === payload.data.id) {
-          state.lists[i] = payload.data;
+          // don't insert object to array like below
+          // ex) state.lists[i] = payload.data
+          state.lists.splice(i, 1, payload.data);
         }
       });
     },

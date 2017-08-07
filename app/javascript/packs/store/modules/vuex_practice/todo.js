@@ -81,7 +81,7 @@ export default {
     [types.DONE_TASK] (state, payload) {
       state.todos.forEach((todo, i) => {
         if(todo.id === payload.data.id) {
-          state.todos[i] = payload.data
+          state.todos.splice(i, 1, payload.data);
         }
       });
     },
