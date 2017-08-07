@@ -10,15 +10,15 @@ export default {
   state: {
     todos: [],
   },
-  getters: {
-    nextId: (state, getters) => {
-      let maxId = 0;
-      state.todos.forEach((todo) => {
-        if(todo.id > maxId) maxId = todo.id;
-      });
-      return ++maxId;
-    }
-  },
+  // getters: {
+  //   nextId: (state, getters) => {
+  //     let maxId = 0;
+  //     state.todos.forEach((todo) => {
+  //       if(todo.id > maxId) maxId = todo.id;
+  //     });
+  //     return ++maxId;
+  //   }
+  // },
   actions: {
     // NOTE: Sync ADD_TASK
     // [types.ADD_TASK] (context, body) { // context has getters, state, commit, dispatch, rootGetters
