@@ -3,7 +3,7 @@
       <div class="panel panel-default">
         <div class="panel-heading strong">
           <!-- somehow focus and blur event does not work. -->
-          <input v-show="editing" @keyup.enter="doneEdit" type="text" :value="list.title">
+          <input v-show="editing" @blur="doneEdit" @keyup.enter="doneEdit" type="text" :value="list.title">
           <span v-show="!editing" @click="onEditing">{{ list.title }}</span>
         </div>
         <div class="panel-body text-right">コンテンツ</div>
