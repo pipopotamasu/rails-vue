@@ -9,9 +9,9 @@ axios.defaults.headers.common['Accept'] = 'application/json'
 export default {
   state: {
     lists: [
-      { id: 1, order: 1, title: 'List1'},
-      { id: 2, order: 2, title: 'List2'},
-      { id: 3, order: 3, title: 'List3'},
+      { id: 1, order: 1, title: 'List1', cards: []},
+      { id: 2, order: 2, title: 'List2', cards: []},
+      { id: 3, order: 3, title: 'List3', cards: []},
     ],
   },
   getters: {
@@ -31,12 +31,18 @@ export default {
       const newList = {
         id: getters.nextId,
         order: getters.nextOrder,
-        title: `List${ getters.nextOrder }`
+        title: 'New List'
       };
 
       commit({
           type: types.ADD_LIST,
           data: newList
+      });
+    },
+    [types.DELETE_LIST] ({ commit, getters }, list) {
+      commit({
+          type: types.DELETE_LIST,
+          data: list
       });
     },
     [types.UPDATE_LIST] ({ commit }, newList) {
@@ -45,10 +51,29 @@ export default {
           data: newList
       });
     },
+    [types.ADD_CARD] ({ commit, getters }) {
+      // const newList = {
+      //   id: getters.nextId,
+      //   order: getters.nextOrder,
+      //   title: `List${ getters.nextOrder }`
+      // };
+      //
+      // commit({
+      //     type: types.ADD_LIST,
+      //     data: newList
+      // });
+    },
   },
   mutations: {
     [types.ADD_LIST] (state, payload) {
       state.lists.push(payload.data);
+    },
+    [types.DELETE_LIST] (state, payload) {
+      state.lists.forEach((list, i) => {
+        if(list.id === payload.data.id) {
+          state.lists.splice(i, 1,);
+        }
+      });
     },
     [types.UPDATE_LIST] (state, payload) {
       state.lists.forEach((list, i) => {
@@ -59,6 +84,9 @@ export default {
           state.lists.splice(i, 1, payload.data);
         }
       });
+    },
+    [types.ADD_CARD] (state, payload) {
+      //state.lists.push(payload.data);
     },
   }
 };

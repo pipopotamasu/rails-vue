@@ -5,8 +5,9 @@
           <!-- somehow focus and blur event does not work. -->
           <input v-show="editing" @blur="doneEdit" @keyup.enter="doneEdit" type="text" :value="list.title">
           <span v-show="!editing" @click="onEditing">{{ list.title }}</span>
+          <i @click="DELETE_LIST(list)" class="glyphicon glyphicon-trash pull-right delete-list"></i>
         </div>
-        <div class="panel-body text-right">コンテンツ</div>
+        <draft-card></draft-card>
       </div>
     </div>
 </template>
@@ -14,6 +15,7 @@
 <script>
 import { mapActions } from 'vuex'
 import * as types from '../../store/actions/trello-mutation-types';
+import DraftCard from './draft_card.vue'
 
 export default {
   props: ['list'],
@@ -22,9 +24,13 @@ export default {
         editing: false
     }
   },
+  components: {
+    DraftCard
+  },
   methods: {
     ...mapActions([
         types.UPDATE_LIST,
+        types.DELETE_LIST,
     ]),
     onEditing: function() {
       this.editing = true
@@ -38,4 +44,8 @@ export default {
 </script>
 
 <style scoped>
+.delete-list {
+  top: 3px;
+  cursor: pointer;
+}
 </style>
