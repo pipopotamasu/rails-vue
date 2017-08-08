@@ -7,7 +7,8 @@
           <span v-show="!editing" @click="onEditing">{{ list.title }}</span>
           <i @click="DELETE_LIST(list)" class="glyphicon glyphicon-trash pull-right delete-list"></i>
         </div>
-        <draft-card></draft-card>
+        <card v-for="card in list.cards" :card="card" :key="card.id"></card>
+        <draft-card :list="list"></draft-card>
       </div>
     </div>
 </template>
@@ -16,6 +17,7 @@
 import { mapActions } from 'vuex'
 import * as types from '../../store/actions/trello-mutation-types';
 import DraftCard from './draft_card.vue'
+import Card from './card.vue'
 
 export default {
   props: ['list'],
@@ -25,7 +27,8 @@ export default {
     }
   },
   components: {
-    DraftCard
+    DraftCard,
+    Card
   },
   methods: {
     ...mapActions([
