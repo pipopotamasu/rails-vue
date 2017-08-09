@@ -41,7 +41,8 @@ export default {
       const newList = {
         id: getters.nextListId,
         order: getters.nextListOrder,
-        title: 'New List'
+        title: 'New List',
+        cards: []
       };
 
       commit({
@@ -85,6 +86,11 @@ export default {
           state.lists.splice(i, 1);
           return true;
         }
+      });
+
+      // Set new order
+      state.lists.forEach((list, i) => {
+        state.lists[i].order = i + 1;
       });
     },
     [types.UPDATE_LIST] (state, payload) {
