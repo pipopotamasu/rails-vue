@@ -53,7 +53,7 @@ export default {
     },
     doneEdit: function(e) {
       this.editing = false
-      this.UPDATE_LIST({ id :this.list.id, order: this.list.order, title: e.target.value });
+      this.UPDATE_LIST({ id :this.list.id, order: this.list.order, title: e.target.value, cards: this.list.cards });
     },
   }
 }
