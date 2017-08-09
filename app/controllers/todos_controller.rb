@@ -3,7 +3,7 @@ class TodosController < ApplicationController
   end
 
   def create
-    render json: Todo.create(todo_param)
+    render json: Todo.create(todo_params)
   end
 
   def destroy
