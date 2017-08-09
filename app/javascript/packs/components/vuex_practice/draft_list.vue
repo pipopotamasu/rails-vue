@@ -1,8 +1,6 @@
 <template>
-    <div class="col-sm-2">
-      <div class="panel panel-default">
-        <div class="panel-heading strong"><button @click="ADD_LIST">リストを追加</button></div>
-      </div>
+    <div class="col-sm-2 buttons">
+      <button type="button" class="btn btn-primary" @click="ADD_LIST">Add List</button>
     </div>
 </template>
 
@@ -20,4 +18,7 @@ export default {
 </script>
 
 <style scoped>
+.buttons {
+  top: 3em;
+}
 </style>

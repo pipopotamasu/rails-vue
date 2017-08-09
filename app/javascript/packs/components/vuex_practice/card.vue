@@ -1,9 +1,7 @@
 <template>
-    <div class="card-container">
-      <div class="card-body">
-        <input v-show="editing" type="text" :value="card.name">
-        <span v-show="!editing">{{ card.name }}</span>
-      </div>
+    <div class="card-body">
+      <input v-show="editing" type="text" :value="card.name">
+      <span v-show="!editing">{{ card.name }}</span>
     </div>
 </template>
 
@@ -30,6 +28,7 @@ export default {
 .card-container {
   padding: 7px 5px;
   background-color: #f5f5f5;
+  cursor: pointer;
 }
 
 .card-body {

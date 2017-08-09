@@ -50,6 +50,16 @@ export default {
           data: newList
       });
     },
+    [types.SORT_LIST_ORDER] ({ commit }) {
+      commit({
+          type: types.SORT_LIST_ORDER
+      });
+    },
+    [types.SORT_CARD] ({ commit}, list) {
+      commit({
+          type: types.SORT_CARD
+      });
+    },
     [types.DELETE_LIST] ({ commit, getters }, list) {
       commit({
           type: types.DELETE_LIST,
@@ -79,6 +89,19 @@ export default {
   mutations: {
     [types.ADD_LIST] (state, payload) {
       state.lists.push(payload.data);
+    },
+    [types.SORT_LIST_ORDER] (state, payload) {
+      state.lists.forEach((list, i) => {
+        state.lists[i].order = i + 1;
+      });
+    },
+    [types.SORT_CARD] (state, payload) {
+      state.lists.forEach((list, l_i) => {
+        list.cards.forEach((card, c_i) => {
+          state.lists[l_i].cards[c_i].list_id = list.id;
+          state.lists[l_i].cards[c_i].order = c_i + 1;
+        });
+      });
     },
     [types.DELETE_LIST] (state, payload) {
       state.lists.some((list, i) => {

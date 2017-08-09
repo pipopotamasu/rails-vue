@@ -1,0 +1,230 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@3.10.8
+3 info using node@v6.9.1
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly install normalizeTree
+8 silly loadCurrentTree Finishing
+9 silly loadIdealTree Starting
+10 silly install loadIdealTree
+11 silly cloneCurrentTree Starting
+12 silly install cloneCurrentTreeToIdealTree
+13 silly cloneCurrentTree Finishing
+14 silly loadShrinkwrap Starting
+15 silly install loadShrinkwrap
+16 silly loadShrinkwrap Finishing
+17 silly loadAllDepsIntoIdealTree Starting
+18 silly install loadAllDepsIntoIdealTree
+19 silly fetchNamedPackageData vue-draggable
+20 silly mapToRegistry name vue-draggable
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry data Result {
+23 silly mapToRegistry   raw: 'vue-draggable',
+23 silly mapToRegistry   scope: null,
+23 silly mapToRegistry   escapedName: 'vue-draggable',
+23 silly mapToRegistry   name: 'vue-draggable',
+23 silly mapToRegistry   rawSpec: '',
+23 silly mapToRegistry   spec: 'latest',
+23 silly mapToRegistry   type: 'tag' }
+24 silly mapToRegistry uri https://registry.npmjs.org/vue-draggable
+25 silly fetchOtherPackageData vue-sortable@git://github.com/MunGell/vue-sortable.git#77c26994
+26 silly cache add args [ 'vue-sortable@git://github.com/MunGell/vue-sortable.git#77c26994',
+26 silly cache add   null ]
+27 verbose cache add spec vue-sortable@git://github.com/MunGell/vue-sortable.git#77c26994
+28 silly cache add parsed spec Result {
+28 silly cache add   raw: 'vue-sortable@git://github.com/MunGell/vue-sortable.git#77c26994',
+28 silly cache add   scope: null,
+28 silly cache add   escapedName: 'vue-sortable',
+28 silly cache add   name: 'vue-sortable',
+28 silly cache add   rawSpec: 'git://github.com/MunGell/vue-sortable.git#77c26994',
+28 silly cache add   spec: 'git://github.com/MunGell/vue-sortable.git#77c26994',
+28 silly cache add   type: 'hosted',
+28 silly cache add   hosted:
+28 silly cache add    { type: 'github',
+28 silly cache add      ssh: 'git@github.com:MunGell/vue-sortable.git#77c26994',
+28 silly cache add      sshUrl: 'git+ssh://git@github.com/MunGell/vue-sortable.git#77c26994',
+28 silly cache add      httpsUrl: 'git+https://github.com/MunGell/vue-sortable.git#77c26994',
+28 silly cache add      gitUrl: 'git://github.com/MunGell/vue-sortable.git#77c26994',
+28 silly cache add      shortcut: 'github:MunGell/vue-sortable#77c26994',
+28 silly cache add      directUrl: 'https://raw.githubusercontent.com/MunGell/vue-sortable/77c26994/package.json' } }
+29 verbose addRemoteGit caching git://github.com/MunGell/vue-sortable.git#77c26994
+30 verbose addRemoteGit git://github.com/MunGell/vue-sortable.git#77c26994 is a repository hosted by github
+31 silly tryClone cloning git://github.com/MunGell/vue-sortable.git#77c26994 via git://github.com/MunGell/vue-sortable.git#77c26994
+32 verbose tryClone git-github-com-MunGell-vue-sortable-git-77c26994-b61f55b9 not in flight; caching
+33 verbose correctMkdir /Users/yamatomurakami/.npm/_git-remotes correctMkdir not in flight; initializing
+34 verbose request uri https://registry.npmjs.org/vue-draggable
+35 verbose request no auth needed
+36 info attempt registry request try #1 at 21:56:42
+37 verbose request id 3afa4441780a289a
+38 verbose etag W/"592ed32b-19d7"
+39 verbose lastModified Wed, 31 May 2017 14:28:59 GMT
+40 http request GET https://registry.npmjs.org/vue-draggable
+41 info git [ 'config', '--get', 'remote.origin.url' ]
+42 silly validateExistingRemote git://github.com/MunGell/vue-sortable.git#77c26994 remote.origin.url: git://github.com/MunGell/vue-sortable.git
+43 verbose validateExistingRemote git://github.com/MunGell/vue-sortable.git#77c26994 is updating existing cached remote /Users/yamatomurakami/.npm/_git-remotes/git-github-com-MunGell-vue-sortable-git-77c26994-b61f55b9
+44 info git [ 'fetch', '-a', 'origin' ]
+45 verbose updateRemote git fetch -a origin (git://github.com/MunGell/vue-sortable.git)
+46 verbose correctMkdir /Users/yamatomurakami/.npm/_git-remotes correctMkdir not in flight; initializing
+47 verbose setPermissions git://github.com/MunGell/vue-sortable.git#77c26994 set permissions on /Users/yamatomurakami/.npm/_git-remotes/git-github-com-MunGell-vue-sortable-git-77c26994-b61f55b9
+48 verbose resolveHead git://github.com/MunGell/vue-sortable.git#77c26994 original treeish: 77c26994
+49 info git [ 'rev-list', '-n1', '77c26994' ]
+50 silly resolveHead git://github.com/MunGell/vue-sortable.git#77c26994 resolved treeish: 77c269946401f81dd25573a31e5be2d4e12bc454
+51 verbose resolveHead git://github.com/MunGell/vue-sortable.git#77c26994 resolved Git URL: git://github.com/MunGell/vue-sortable.git#77c269946401f81dd25573a31e5be2d4e12bc454
+52 silly resolveHead Git working directory: /var/folders/xx/1swy6zzn5v7_kpttbgw2mj_80000gn/T/npm-37342-7c4ff944/git-cache-b3944ad0/77c269946401f81dd25573a31e5be2d4e12bc454
+53 info git [ 'clone',
+53 info git   '/Users/yamatomurakami/.npm/_git-remotes/git-github-com-MunGell-vue-sortable-git-77c26994-b61f55b9',
+53 info git   '/var/folders/xx/1swy6zzn5v7_kpttbgw2mj_80000gn/T/npm-37342-7c4ff944/git-cache-b3944ad0/77c269946401f81dd25573a31e5be2d4e12bc454' ]
+54 verbose cloneResolved git://github.com/MunGell/vue-sortable.git#77c26994 clone Cloning into '/var/folders/xx/1swy6zzn5v7_kpttbgw2mj_80000gn/T/npm-37342-7c4ff944/git-cache-b3944ad0/77c269946401f81dd25573a31e5be2d4e12bc454'...
+54 verbose cloneResolved done.
+55 info git [ 'checkout', '77c269946401f81dd25573a31e5be2d4e12bc454' ]
+56 verbose checkoutTreeish git://github.com/MunGell/vue-sortable.git#77c26994 checkout Note: checking out '77c269946401f81dd25573a31e5be2d4e12bc454'.
+56 verbose checkoutTreeish
+56 verbose checkoutTreeish You are in 'detached HEAD' state. You can look around, make experimental
+56 verbose checkoutTreeish changes and commit them, and you can discard any commits you make in this
+56 verbose checkoutTreeish state without impacting any branches by performing another checkout.
+56 verbose checkoutTreeish
+56 verbose checkoutTreeish If you want to create a new branch to retain commits you create, you may
+56 verbose checkoutTreeish do so (now or later) by using -b with the checkout command again. Example:
+56 verbose checkoutTreeish
+56 verbose checkoutTreeish   git checkout -b <new-branch-name>
+56 verbose checkoutTreeish
+56 verbose checkoutTreeish HEAD is now at 77c2699... Merge branch 'master' of github.com:sagalbot/vue-sortable
+57 info git [ 'submodule', '-q', 'update', '--init', '--recursive' ]
+58 verbose updateSubmodules git://github.com/MunGell/vue-sortable.git#77c26994 submodule update
+59 verbose addLocalDirectory /Users/yamatomurakami/.npm/vue-sortable/0.1.3/package.tgz not in flight; packing
+60 verbose correctMkdir /Users/yamatomurakami/.npm correctMkdir not in flight; initializing
+61 verbose tar pack [ '/Users/yamatomurakami/.npm/vue-sortable/0.1.3/package.tgz',
+61 verbose tar pack   '/var/folders/xx/1swy6zzn5v7_kpttbgw2mj_80000gn/T/npm-37342-7c4ff944/git-cache-b3944ad0/77c269946401f81dd25573a31e5be2d4e12bc454' ]
+62 verbose tarball /Users/yamatomurakami/.npm/vue-sortable/0.1.3/package.tgz
+63 verbose folder /var/folders/xx/1swy6zzn5v7_kpttbgw2mj_80000gn/T/npm-37342-7c4ff944/git-cache-b3944ad0/77c269946401f81dd25573a31e5be2d4e12bc454
+64 verbose addLocalTarball adding from inside cache /Users/yamatomurakami/.npm/vue-sortable/0.1.3/package.tgz
+65 verbose correctMkdir /Users/yamatomurakami/.npm correctMkdir not in flight; initializing
+66 verbose addRemoteGit data._from: git://github.com/MunGell/vue-sortable.git#77c26994
+67 verbose addRemoteGit data._resolved: git://github.com/MunGell/vue-sortable.git#77c269946401f81dd25573a31e5be2d4e12bc454
+68 silly cache afterAdd vue-sortable@0.1.3
+69 verbose afterAdd /Users/yamatomurakami/.npm/vue-sortable/0.1.3/package/package.json not in flight; writing
+70 verbose correctMkdir /Users/yamatomurakami/.npm correctMkdir not in flight; initializing
+71 verbose afterAdd /Users/yamatomurakami/.npm/vue-sortable/0.1.3/package/package.json written
+72 silly resolveWithNewModule vue-sortable@0.1.3 checking installable status
+73 http 304 https://registry.npmjs.org/vue-draggable
+74 verbose headers { date: 'Wed, 09 Aug 2017 12:56:37 GMT',
+74 verbose headers   via: '1.1 varnish',
+74 verbose headers   'cache-control': 'max-age=300',
+74 verbose headers   etag: 'W/"592ed32b-19d7"',
+74 verbose headers   age: '0',
+74 verbose headers   connection: 'keep-alive',
+74 verbose headers   'x-served-by': 'cache-sin18033-SIN',
+74 verbose headers   'x-cache': 'MISS',
+74 verbose headers   'x-cache-hits': '0',
+74 verbose headers   'x-timer': 'S1502283397.230348,VS0,VE145',
+74 verbose headers   vary: 'Accept-Encoding, Accept' }
+75 silly get cb [ 304,
+75 silly get   { date: 'Wed, 09 Aug 2017 12:56:37 GMT',
+75 silly get     via: '1.1 varnish',
+75 silly get     'cache-control': 'max-age=300',
+75 silly get     etag: 'W/"592ed32b-19d7"',
+75 silly get     age: '0',
+75 silly get     connection: 'keep-alive',
+75 silly get     'x-served-by': 'cache-sin18033-SIN',
+75 silly get     'x-cache': 'MISS',
+75 silly get     'x-cache-hits': '0',
+75 silly get     'x-timer': 'S1502283397.230348,VS0,VE145',
+75 silly get     vary: 'Accept-Encoding, Accept' } ]
+76 verbose etag https://registry.npmjs.org/vue-draggable from cache
+77 verbose get saving vue-draggable to /Users/yamatomurakami/.npm/registry.npmjs.org/vue-draggable/.cache.json
+78 verbose correctMkdir /Users/yamatomurakami/.npm correctMkdir not in flight; initializing
+79 silly fetchNamedPackageData No valid target from cache, forcing network
+80 verbose request uri https://registry.npmjs.org/vue-draggable
+81 verbose request no auth needed
+82 info attempt registry request try #1 at 21:56:45
+83 http request GET https://registry.npmjs.org/vue-draggable
+84 http 200 https://registry.npmjs.org/vue-draggable
+85 verbose headers { server: 'nginx/1.10.3',
+85 verbose headers   'content-type': 'application/json',
+85 verbose headers   'last-modified': 'Wed, 31 May 2017 14:28:59 GMT',
+85 verbose headers   etag: 'W/"592ed32b-19d7"',
+85 verbose headers   'content-encoding': 'gzip',
+85 verbose headers   'cache-control': 'max-age=300',
+85 verbose headers   'content-length': '1930',
+85 verbose headers   'accept-ranges': 'bytes',
+85 verbose headers   date: 'Wed, 09 Aug 2017 12:56:37 GMT',
+85 verbose headers   via: '1.1 varnish',
+85 verbose headers   age: '0',
+85 verbose headers   connection: 'keep-alive',
+85 verbose headers   'x-served-by': 'cache-sin18033-SIN',
+85 verbose headers   'x-cache': 'HIT',
+85 verbose headers   'x-cache-hits': '1',
+85 verbose headers   'x-timer': 'S1502283397.474148,VS0,VE0',
+85 verbose headers   vary: 'Accept-Encoding, Accept' }
+86 silly get cb [ 200,
+86 silly get   { server: 'nginx/1.10.3',
+86 silly get     'content-type': 'application/json',
+86 silly get     'last-modified': 'Wed, 31 May 2017 14:28:59 GMT',
+86 silly get     etag: 'W/"592ed32b-19d7"',
+86 silly get     'content-encoding': 'gzip',
+86 silly get     'cache-control': 'max-age=300',
+86 silly get     'content-length': '1930',
+86 silly get     'accept-ranges': 'bytes',
+86 silly get     date: 'Wed, 09 Aug 2017 12:56:37 GMT',
+86 silly get     via: '1.1 varnish',
+86 silly get     age: '0',
+86 silly get     connection: 'keep-alive',
+86 silly get     'x-served-by': 'cache-sin18033-SIN',
+86 silly get     'x-cache': 'HIT',
+86 silly get     'x-cache-hits': '1',
+86 silly get     'x-timer': 'S1502283397.474148,VS0,VE0',
+86 silly get     vary: 'Accept-Encoding, Accept' } ]
+87 verbose get saving vue-draggable to /Users/yamatomurakami/.npm/registry.npmjs.org/vue-draggable/.cache.json
+88 verbose correctMkdir /Users/yamatomurakami/.npm correctMkdir not in flight; initializing
+89 silly fetchPackageMetaData Error: No compatible version found: vue-draggable@^2.14.1
+89 silly fetchPackageMetaData Valid install targets:
+89 silly fetchPackageMetaData 1.0.0-rc.3, 1.0.0-rc.2, 1.0.0-rc.1
+89 silly fetchPackageMetaData
+89 silly fetchPackageMetaData     at pickVersionFromRegistryDocument (/usr/local/lib/node_modules/npm/lib/fetch-package-metadata.js:178:16)
+89 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/iferr/index.js:13:50
+89 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/lib/utils/pulse-till-done.js:20:8
+89 silly fetchPackageMetaData     at saved (/usr/local/lib/node_modules/npm/lib/cache/caching-client.js:174:7)
+89 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:233:18
+89 silly fetchPackageMetaData     at FSReqWrap.oncomplete (fs.js:123:15)
+89 silly fetchPackageMetaData  error for vue-draggable@^2.14.1 { Error: No compatible version found: vue-draggable@^2.14.1
+89 silly fetchPackageMetaData Valid install targets:
+89 silly fetchPackageMetaData 1.0.0-rc.3, 1.0.0-rc.2, 1.0.0-rc.1
+89 silly fetchPackageMetaData
+89 silly fetchPackageMetaData     at pickVersionFromRegistryDocument (/usr/local/lib/node_modules/npm/lib/fetch-package-metadata.js:178:16)
+89 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/iferr/index.js:13:50
+89 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/lib/utils/pulse-till-done.js:20:8
+89 silly fetchPackageMetaData     at saved (/usr/local/lib/node_modules/npm/lib/cache/caching-client.js:174:7)
+89 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:233:18
+89 silly fetchPackageMetaData     at FSReqWrap.oncomplete (fs.js:123:15) code: 'ETARGET' }
+90 silly rollbackFailedOptional Starting
+91 silly rollbackFailedOptional Finishing
+92 silly runTopLevelLifecycles Finishing
+93 silly install printInstalled
+94 verbose stack Error: No compatible version found: vue-draggable@^2.14.1
+94 verbose stack Valid install targets:
+94 verbose stack 1.0.0-rc.3, 1.0.0-rc.2, 1.0.0-rc.1
+94 verbose stack
+94 verbose stack     at pickVersionFromRegistryDocument (/usr/local/lib/node_modules/npm/lib/fetch-package-metadata.js:178:16)
+94 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/iferr/index.js:13:50
+94 verbose stack     at /usr/local/lib/node_modules/npm/lib/utils/pulse-till-done.js:20:8
+94 verbose stack     at saved (/usr/local/lib/node_modules/npm/lib/cache/caching-client.js:174:7)
+94 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:233:18
+94 verbose stack     at FSReqWrap.oncomplete (fs.js:123:15)
+95 verbose cwd /Users/yamatomurakami/vagrant/rails-vue
+96 error Darwin 16.7.0
+97 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install"
+98 error node v6.9.1
+99 error npm  v3.10.8
+100 error code ETARGET
+101 error notarget No compatible version found: vue-draggable@^2.14.1
+101 error notarget Valid install targets:
+101 error notarget 1.0.0-rc.3, 1.0.0-rc.2, 1.0.0-rc.1
+102 error notarget This is most likely not a problem with npm itself.
+102 error notarget In most cases you or one of your dependencies are requesting
+102 error notarget a package version that doesn't exist.
+102 error notarget
+102 error notarget It was specified as a dependency of 'rails-vue'
+103 verbose exit [ 1, true ]
