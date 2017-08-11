@@ -147,7 +147,7 @@ export default {
     [types.UPDATE_CARD] (state, payload) {
       state.lists.some((list, i) => {
         if(list.id === payload.data.list_id) {
-          state.lists[i].cards.splice(payload.data.card_order - 1, 1, payload.data);
+          state.lists[i].cards.splice(payload.data.order - 1, 1, payload.data);
           return true;
         }
       });
