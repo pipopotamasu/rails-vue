@@ -2,7 +2,7 @@
     <div class="col-sm-2">
       <div class="panel panel-default">
         <div class="panel-heading strong">
-          <input v-show="editing" @blur="doneEdit" @keyup.enter="doneEdit" type="text" size="12" :value="list.title">
+          <input v-show="editing" @blur="doneEdit" @keyup.enter="doneEdit" type="text" size="16" :value="list.title">
           <span v-show="!editing" @click="onEditing">{{ list.title }}</span>
           <i v-show="!editing" @click="DELETE_LIST(list)" class="glyphicon glyphicon-trash pull-right delete-list"></i>
         </div>
@@ -46,13 +46,21 @@ export default {
         types.UPDATE_LIST,
         types.DELETE_LIST,
         types.SORT_CARD,
+        types.UPDATING,
+        types.DONE_UPDATE,
     ]),
     onEditing: function() {
       this.editing = true
     },
     doneEdit: function(e) {
-      this.editing = false
-      this.UPDATE_LIST({ id :this.list.id, order: this.list.order, title: e.target.value, cards: this.list.cards });
+      if(!this.updating) {
+        this.UPDATING();
+        this.editing = false
+        this.UPDATE_LIST({ id :this.list.id, order: this.list.order, title: e.target.value, cards: this.list.cards });
+        if(e.type === 'blur') this.DONE_UPDATE();
+      }else{
+        this.DONE_UPDATE();
+      }
     },
   }
 }
