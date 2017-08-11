@@ -1,18 +1,22 @@
 <template>
-    <li v-bind:class="{ 'done': item.is_do }" @click="DONE_TASK(item)">{{ item.title }}</li>
+    <li v-bind:class="{ 'done': todo.checked }" @click="DONE_TASK(todo)">
+      {{ todo.body }}
+      <span @click="DELETE_TASK(todo)" class="delete">[×]</span>
+    </li>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
-import * as types from '../../store/actions/mutation-types';
+import * as types from '../../store/actions/todo-mutation-types';
 
 export default {
-    props: ['item'],
-    methods: {
-      ...mapActions([
-          types.DONE_TASK
-      ])
-    }
+  props: ['todo'],
+  methods: {
+    ...mapActions([
+        types.DONE_TASK,
+        types.DELETE_TASK
+    ])
+  }
 }
 </script>
 

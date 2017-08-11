@@ -1,52 +1,78 @@
-import * as types from '../../actions/mutation-types'
+import * as types from '../../actions/todo-mutation-types'
+import axios from 'axios'
+
+// set csrf token by getting that from dom.
+let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
+axios.defaults.headers.common['X-CSRF-Token'] = token
+axios.defaults.headers.common['Accept'] = 'application/json'
 
 export default {
   state: {
-    todos: [
-      { id: 1, is_do: false, title: 'タスク1'},
-      { id: 2, is_do: true, title: 'タスク2'},
-      { id: 3, is_do: false, title: 'タスク3'}
-    ],
+    todos: [],
   },
-  getters: {
-    nextId: (state, getters) => {
-      let maxId = 0;
-      state.todos.forEach((todo) => {
-        if(todo.id > maxId) maxId = todo.id;
-      });
-      return ++maxId;
-    }
-  },
+  // getters: {
+  //   nextId: (state, getters) => {
+  //     let maxId = 0;
+  //     state.todos.forEach((todo) => {
+  //       if(todo.id > maxId) maxId = todo.id;
+  //     });
+  //     return ++maxId;
+  //   }
+  // },
   actions: {
-    // [types.ADD_TASK] (context, title) { // context has getters, state, commit, dispatch, rootGetters
+    // NOTE: Sync ADD_TASK
+    // [types.ADD_TASK] (context, body) { // context has getters, state, commit, dispatch, rootGetters
     //   let newTodo = {
     //     id: context.getters.nextId,
-    //     title: title,
-    //     is_do: false,
+    //     body: body,
+    //     checked: false,
     //   }
     //   context.commit({
     //       type: types.ADD_TASK,
     //       data: newTodo
     //   })
     // },
-    [types.ADD_TASK] ({ commit, getters }, title) {
-      let newTodo = {
-        id: getters.nextId,
-        title: title,
-        is_do: false,
-      }
-      commit({
+    [types.ADD_TASK] ({ commit, getters}, body) {
+      axios.post('/todos', {
+        body: body
+      }).then((response) => {
+        commit({
           type: types.ADD_TASK,
-          data: newTodo
-      })
+          data: response.data
+        })
+      }).catch((e) => {
+        console.log(e);
+      });
     },
-    [types.DONE_TASK] ({ commit }, item) {
-      item.is_do = !item.is_do
+    [types.DONE_TASK] ({ commit }, todo) {
+      todo.checked = !todo.checked
       commit({
           type: types.DONE_TASK,
-          data: item
+          data: todo
       })
-    }
+    },
+    [types.FETCH_TODOS] ({ commit }) {
+      axios.get('/todos/all').then((response) => {
+        commit({
+            type: types.FETCH_TODOS,
+            data: response.data
+        })
+      }).catch((e) => {
+        console.log(e)
+      });
+    },
+    [types.DELETE_TASK] ({ commit }, todo) {
+      axios.delete('/todos/' + todo.id, {
+        id: todo.id
+      }).then((response) => {
+        commit({
+            type: types.DELETE_TASK,
+            data: todo
+        })
+      }).catch((e) => {
+        console.log(e);
+      });
+    },
   },
   mutations: {
     [types.ADD_TASK] (state, payload) { // payload・・・nimotsu
@@ -55,7 +81,17 @@ export default {
     [types.DONE_TASK] (state, payload) {
       state.todos.forEach((todo, i) => {
         if(todo.id === payload.data.id) {
-          state.todos[i] = payload.data
+          state.todos.splice(i, 1, payload.data);
+        }
+      });
+    },
+    [types.FETCH_TODOS] (state, payload) {
+      state.todos = payload.data;
+    },
+    [types.DELETE_TASK] (state, payload) {
+      state.todos.forEach((todo, i) => {
+        if(todo.id === payload.data.id) {
+          state.todos.splice(i, 1);
         }
       });
     },

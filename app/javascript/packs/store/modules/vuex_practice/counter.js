@@ -1,20 +1,35 @@
+import * as types from '../../actions/counter-mutation-types'
+
 export default {
   state: {
     count: 0,
   },
+  actions: {
+    [types.INCREMENT] ({ commit }){
+      commit({
+        type: types.INCREMENT
+      });
+    },
+    [types.DECREMENT] ({ commit }){
+      commit({
+        type: types.DECREMENT
+      });
+    },
+    [types.RESET] ({ commit }){
+      commit({
+        type: types.RESET
+      });
+    },
+  },
   mutations: {
-    increment(state) {
-      if (state.count < 100) {
-        state.count += 1;
-      }
+    [types.INCREMENT] (state, payload) {
+      state.count += 1;
     },
-    decrement(state) {
-      if (state.count > 0) {
-        state.count += -1;
-      }
+    [types.DECREMENT] (state, payload) {
+      state.count -= 1;
     },
-    reset(state) {
+    [types.RESET] (state, payload) {
       state.count = 0;
-    }
+    },
   }
 }
