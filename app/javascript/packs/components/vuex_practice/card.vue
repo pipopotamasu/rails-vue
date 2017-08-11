@@ -1,7 +1,7 @@
 <template>
     <div class="card-body">
-      <input v-show="editing" type="text" :value="card.name">
-      <span v-show="!editing">{{ card.name }}</span>
+      <input v-show="editing" @blur="doneEdit" @keyup.enter="doneEdit" type="text" :value="card.name">
+      <span v-show="!editing" @click="onEditing">{{ card.name }}</span>
     </div>
 </template>
 
@@ -17,9 +17,16 @@ export default {
     }
   },
   methods: {
-    // ...mapActions([
-    //     types.UPDATE_LIST,
-    // ])
+    ...mapActions([
+        types.UPDATE_CARD,
+    ]),
+    onEditing: function() {
+      this.editing = true
+    },
+    doneEdit: function(e) {
+      this.editing = false
+      this.UPDATE_CARD({ id :this.card.id, list_id: this.card.list_id, order: this.card.order, name: e.target.value });
+    },
   }
 }
 </script>

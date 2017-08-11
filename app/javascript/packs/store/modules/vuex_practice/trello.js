@@ -12,7 +12,7 @@ export default {
       { id: 1, order: 1, title: 'List1', cards: [ { id: 1, list_id: 1, order: 1, name: 'Task1' }, { id: 2, list_id: 1, order: 2, name: 'Task2' } ]},
       { id: 2, order: 2, title: 'List2', cards: []},
       { id: 3, order: 3, title: 'List3', cards: []},
-    ],
+    ]
   },
   getters: {
     nextListId: (state, getters) => {
@@ -72,6 +72,12 @@ export default {
           data: newList
       });
     },
+    [types.UPDATE_CARD] ({ commit }, newCard) {
+      commit({
+          type: types.UPDATE_CARD,
+          data: newCard
+      });
+    },
     [types.ADD_CARD] ({ commit, getters }, list) {
       const newCard = {
         id: getters.nextCardId(list.order),
@@ -123,6 +129,15 @@ export default {
           // ex) state.lists[i] = payload.data
           // components life cycle do not work if you do so.
           state.lists.splice(i, 1, payload.data);
+          return true;
+        }
+      });
+    },
+    [types.UPDATE_CARD] (state, payload) {
+      console.log(1);
+      state.lists.some((list, i) => {
+        if(list.id === payload.data.list_id) {
+          state.lists[i].cards.splice(payload.data.card_order - 1, 1, payload.data);
           return true;
         }
       });
