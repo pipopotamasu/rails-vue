@@ -9,3 +9,4 @@ export const DELETE_CARD = 'DELETE_CARD';
 export const UPDATING = 'UPDATING';
 export const DONE_UPDATE = 'DONE_UPDATE';
 export const SAVE = 'SAVE';
+export const FETCH_DATA = 'FETCH_DATA';

@@ -8,11 +8,7 @@ axios.defaults.headers.common['Accept'] = 'application/json'
 
 export default {
   state: {
-    lists: [
-      { id: 1, order: 1, title: 'List1', cards: [ { id: 1, list_id: 1, order: 1, name: 'Task1' }, { id: 2, list_id: 1, order: 2, name: 'Task2' } ]},
-      { id: 2, order: 2, title: 'List2', cards: []},
-      { id: 3, order: 3, title: 'List3', cards: []},
-    ],
+    lists: [],
     updating: false
   },
   getters: {
@@ -118,6 +114,17 @@ export default {
         console.log(e);
       });
     },
+    [types.FETCH_DATA] ({ commit }) {
+      axios.get('/lists/all').then((response) => {
+        console.log(response.data);
+        commit({
+            type: types.FETCH_DATA,
+            data: response.data
+        })
+      }).catch((e) => {
+        console.log(e);
+      });
+    },
   },
   mutations: {
     [types.ADD_LIST] (state, payload) {
@@ -196,6 +203,9 @@ export default {
     },
     [types.DONE_UPDATE] (state, payload) {
       state.updating = false;
+    },
+    [types.FETCH_DATA] (state, payload) {
+      state.lists = payload.data;
     },
   }
 };

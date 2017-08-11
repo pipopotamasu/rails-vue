@@ -5,7 +5,14 @@ class ListsController < ApplicationController
   end
 
   def all
-    render json: List.all
+    lists = []
+    List.all.each do |list|
+      lists.push({ id: list.id,
+                   order: list.order,
+                   title: list.title,
+                   cards: Card.where(list_id: list.id) })
+    end
+    render json: lists
   end
 
   private

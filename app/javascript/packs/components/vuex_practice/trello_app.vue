@@ -21,6 +21,9 @@ export default {
     Buttons,
     Draggable
   },
+  created: function() {
+    this.FETCH_DATA();
+  },
   computed: {
     // share store state
     ...mapState(['trello']),
@@ -29,6 +32,7 @@ export default {
   methods: {
     ...mapActions([
         types.SORT_LIST_ORDER,
+        types.FETCH_DATA
     ]),
   }
 }
