@@ -10,10 +10,16 @@ This is web-app created by rails-5.1 and vue.js with webpacker.
 bundle install
 
 # build js assets
-rails webpack
+bin/webpack
+
+# build js assets (production)
+bin/webpack -p
+
+# build by watch
+bin/webpack -w
 
 # serve without hot reload
-rails s
+bin/rails s
 
 # serve with hot reload
 bin/serve

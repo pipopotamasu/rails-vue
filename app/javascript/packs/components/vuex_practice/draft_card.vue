@@ -1,5 +1,5 @@
 <template>
-  <div class="panel-footer strong add-card" @click="ADD_CARD(list)">カードを追加</div>
+  <div class="panel-footer strong add-card" @click="ADD_CARD(list)">Add Card</div>
 </template>
 
 <script>
