@@ -1,7 +1,7 @@
 <template>
   <div id="trello">
     <draggable v-model="trello.lists" :element="'div'" @end="SORT_LIST_ORDER" :options="{ animation: 200 }">
-      <list v-for="list in trello.lists" :list="list" :key="list.id"></list>
+      <list v-for="list in trello.lists" :list="list" :updating='trello.updating' :key="list.id"></list>
       <draft-list></draft-list>
     </draggable>
   </div>

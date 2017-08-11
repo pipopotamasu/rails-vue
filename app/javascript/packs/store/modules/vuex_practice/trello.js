@@ -12,7 +12,8 @@ export default {
       { id: 1, order: 1, title: 'List1', cards: [ { id: 1, list_id: 1, order: 1, name: 'Task1' }, { id: 2, list_id: 1, order: 2, name: 'Task2' } ]},
       { id: 2, order: 2, title: 'List2', cards: []},
       { id: 3, order: 3, title: 'List3', cards: []},
-    ]
+    ],
+    updating: false
   },
   getters: {
     nextListId: (state, getters) => {
@@ -91,6 +92,16 @@ export default {
           data: newCard
       });
     },
+    [types.UPDATING] ({ commit }) {
+      commit({
+          type: types.UPDATING
+      });
+    },
+    [types.DONE_UPDATE] ({ commit }) {
+      commit({
+          type: types.DONE_UPDATE
+      });
+    },
   },
   mutations: {
     [types.ADD_LIST] (state, payload) {
@@ -134,7 +145,6 @@ export default {
       });
     },
     [types.UPDATE_CARD] (state, payload) {
-      console.log(1);
       state.lists.some((list, i) => {
         if(list.id === payload.data.list_id) {
           state.lists[i].cards.splice(payload.data.card_order - 1, 1, payload.data);
@@ -149,6 +159,12 @@ export default {
           return true;
         }
       });
+    },
+    [types.UPDATING] (state, payload) {
+      state.updating = true;
+    },
+    [types.DONE_UPDATE] (state, payload) {
+      state.updating = false;
     },
   }
 };

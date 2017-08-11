@@ -9,7 +9,7 @@
         <draggable v-model="list.cards" :element="'div'" @end="SORT_CARD(list)" :options="{ animation: 200, group: 'card', filter: '.ignore-elements' }">
           <template v-if="list.cards.length > 0">
             <div class="card-container" v-for="card in list.cards">
-              <card :card="card" :key="card.id"></card>
+              <card :card="card" :updating="updating" :key="card.id"></card>
             </div>
           </template>
           <template v-else>
@@ -30,7 +30,7 @@ import Draggable from 'vuedraggable'
 
 
 export default {
-  props: ['list'],
+  props: ['list', 'updating'],
   data () {
     return {
         editing: false
