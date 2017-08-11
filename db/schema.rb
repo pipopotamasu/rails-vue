@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622222006) do
+ActiveRecord::Schema.define(version: 20170811121430) do
+
+  create_table "cards", force: :cascade do |t|
+    t.integer "list_id"
+    t.string "name"
+    t.integer "order"
+    t.index ["list_id"], name: "index_cards_on_list_id"
+  end
 
   create_table "grids", force: :cascade do |t|
     t.string "name"
     t.integer "power"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "title"
+    t.integer "order"
   end
 
   create_table "todos", force: :cascade do |t|

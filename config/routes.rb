@@ -13,6 +13,12 @@ Rails.application.routes.draw do
 
   resources :vuexes
 
+  resources :lists do
+    collection do
+      get 'all'
+    end
+  end
+
   get '/home', to: 'home#index'
   root to: 'home#index'
 end

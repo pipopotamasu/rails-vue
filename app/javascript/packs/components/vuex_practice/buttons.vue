@@ -1,6 +1,7 @@
 <template>
     <div class="col-sm-2 buttons">
-      <button type="button" class="btn btn-primary" @click="ADD_LIST">Add List</button>
+      <button type="button" class="btn btn-primary btn-lg btn-block" @click="ADD_LIST">Add List</button><br>
+      <button type="button" class="btn btn-success btn-lg btn-block" @click="SAVE">Save</button>
     </div>
 </template>
 
@@ -12,6 +13,7 @@ export default {
   methods: {
     ...mapActions([
         types.ADD_LIST,
+        types.SAVE
     ])
   }
 }
@@ -19,6 +21,6 @@ export default {
 
 <style scoped>
 .buttons {
-  top: 3em;
+  top: 0.5em;
 }
 </style>

@@ -108,6 +108,16 @@ export default {
           type: types.DONE_UPDATE
       });
     },
+    [types.SAVE] ({ state }) {
+      const lists = state.lists.map((list) => { return Object.assign(list, { cards_attributes: list.cards }) });
+      axios.post('/lists', {
+        lists: lists
+      }).then((response) => {
+        console.log(response);
+      }).catch((e) => {
+        console.log(e);
+      });
+    },
   },
   mutations: {
     [types.ADD_LIST] (state, payload) {
