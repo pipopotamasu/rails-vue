@@ -1,6 +1,6 @@
 <template>
     <div class="card-body">
-      <input v-show="editing" @blur="doneEdit" @keyup.enter="doneEdit" type="text" size="18" :value="card.name">
+      <input v-show="editing" @blur="doneEdit" v-focus @keyup.enter="doneEdit" type="text" size="18" :value="card.name">
       <span v-show="!editing" @click="onEditing">{{ card.name }}</span>
       <i v-show="!editing" @click="DELETE_CARD(card)" class="glyphicon glyphicon-trash pull-right delete-card"></i>
     </div>
@@ -15,6 +15,13 @@ export default {
   data () {
     return {
         editing: false
+    }
+  },
+  directives: {
+    focus: {
+      update: function(el) {
+        el.focus();
+      }
     }
   },
   methods: {
