@@ -79,6 +79,12 @@ export default {
           data: newCard
       });
     },
+    [types.DELETE_CARD] ({ commit, getters }, card) {
+      commit({
+          type: types.DELETE_CARD,
+          data: card
+      });
+    },
     [types.ADD_CARD] ({ commit, getters }, list) {
       const newCard = {
         id: getters.nextCardId(list.order),
@@ -150,6 +156,21 @@ export default {
           state.lists[i].cards.splice(payload.data.order - 1, 1, payload.data);
           return true;
         }
+      });
+    },
+    [types.DELETE_CARD] (state, payload) {
+      let listIndexOfDletedCard = 0;
+      state.lists.some((list, i) => {
+        if(list.id === payload.data.list_id) {
+          listIndexOfDletedCard = i;
+          state.lists[i].cards.splice(payload.data.order - 1, 1);
+          return true;
+        }
+      });
+
+      // Set new order
+      state.lists[listIndexOfDletedCard].cards.forEach((card, i) => {
+        state.lists[listIndexOfDletedCard].cards[i].order = i + 1;
       });
     },
     [types.ADD_CARD] (state, payload) {
