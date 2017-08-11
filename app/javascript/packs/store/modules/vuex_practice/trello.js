@@ -109,19 +109,20 @@ export default {
       axios.post('/lists', {
         lists: lists
       }).then((response) => {
-        console.log(response);
+        alert('Success to save!');
       }).catch((e) => {
+        alert('Faild to save.');
         console.log(e);
       });
     },
     [types.FETCH_DATA] ({ commit }) {
       axios.get('/lists/all').then((response) => {
-        console.log(response.data);
         commit({
             type: types.FETCH_DATA,
             data: response.data
         })
       }).catch((e) => {
+        alert('Faild to get data.');
         console.log(e);
       });
     },
