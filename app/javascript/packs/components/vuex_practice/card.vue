@@ -38,7 +38,10 @@ export default {
       if(!this.updating) {
         this.UPDATING();
         this.editing = false
-        this.UPDATE_CARD({ id :this.card.id, list_id: this.card.list_id, order: this.card.order, name: e.target.value });
+        this.UPDATE_CARD({ id :this.card.id,
+                           list_id: this.card.list_id,
+                           order: this.card.order,
+                           name: e.target.value });
         if(e.type === 'blur') this.DONE_UPDATE();
       }else{
         this.DONE_UPDATE();

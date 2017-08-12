@@ -32,6 +32,17 @@ export default {
     nextCardOrder: (state, getters) => (listOrder) => {
       return state.lists[listOrder].cards.length;
     },
+    getListIndexByListId: (state, getters) => (listId) => {
+      let targetIndex = 0;
+      state.lists.some((list, i) => {
+        if(list.id === listId) {
+          targetIndex = i;
+          return true;
+        }
+      });
+
+      return targetIndex;
+    }
   },
   actions: {
     [types.ADD_LIST] ({ commit, getters }) {
@@ -69,16 +80,18 @@ export default {
           list: newList
       });
     },
-    [types.UPDATE_CARD] ({ commit }, newCard) {
+    [types.UPDATE_CARD] ({ commit, getters }, newCard) {
       commit({
           type: types.UPDATE_CARD,
-          data: newCard
+          card: newCard,
+          list_index: getters.getListIndexByListId(newCard.list_id)
       });
     },
     [types.DELETE_CARD] ({ commit, getters }, card) {
       commit({
           type: types.DELETE_CARD,
-          data: card
+          card: card,
+          list_index: getters.getListIndexByListId(card.list_id)
       });
     },
     [types.ADD_CARD] ({ commit, getters }, list) {
@@ -91,7 +104,8 @@ export default {
 
       commit({
           type: types.ADD_CARD,
-          data: newCard
+          card: newCard,
+          list_index: list.order
       });
     },
     [types.UPDATING] ({ commit }) {
@@ -159,35 +173,18 @@ export default {
       state.lists.splice(payload.list.order, 1, payload.list);
     },
     [types.UPDATE_CARD] (state, payload) {
-      state.lists.some((list, i) => {
-        if(list.id === payload.data.list_id) {
-          state.lists[i].cards.splice(payload.data.order, 1, payload.data);
-          return true;
-        }
-      });
+      state.lists[payload.list_index].cards.splice(payload.card.order, 1, payload.card);
     },
     [types.DELETE_CARD] (state, payload) {
-      let listIndexOfDletedCard = 0;
-      state.lists.some((list, i) => {
-        if(list.id === payload.data.list_id) {
-          listIndexOfDletedCard = i;
-          state.lists[i].cards.splice(payload.data.order, 1);
-          return true;
-        }
-      });
+      state.lists[payload.list_index].cards.splice(payload.card.order, 1);
 
       // Set new order
-      state.lists[listIndexOfDletedCard].cards.forEach((card, i) => {
-        state.lists[listIndexOfDletedCard].cards[i].order = i;
+      state.lists[payload.list_index].cards.forEach((card, i) => {
+        state.lists[payload.list_index].cards[i].order = i;
       });
     },
     [types.ADD_CARD] (state, payload) {
-      state.lists.some((list, i) => {
-        if(list.id === payload.data.list_id) {
-          state.lists[i].cards.push(payload.data);
-          return true;
-        }
-      });
+      state.lists[payload.list_index].cards.push(payload.card);
     },
     [types.UPDATING] (state, payload) {
       state.updating = true;
