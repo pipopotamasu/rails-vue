@@ -1,9 +1,9 @@
 <template>
-    <div class="card-body">
-      <input v-show="editing" @blur="doneEdit" @keyup.enter="doneEdit" type="text" size="18" :value="card.name">
-      <span v-show="!editing" @click="onEditing">{{ card.name }}</span>
-      <i v-show="!editing" @click="DELETE_CARD(card)" class="glyphicon glyphicon-trash pull-right delete-card"></i>
-    </div>
+  <div class="card-body">
+    <input v-show="editing" @blur="doneEdit" v-focus @keyup.enter="doneEdit" type="text" size="18" :value="card.name">
+    <span v-show="!editing" @click="onEditing">{{ card.name }}</span>
+    <i v-show="!editing" @click="DELETE_CARD(card)" class="glyphicon glyphicon-trash pull-right delete-card"></i>
+  </div>
 </template>
 
 <script>
@@ -15,6 +15,13 @@ export default {
   data () {
     return {
         editing: false
+    }
+  },
+  directives: {
+    focus: {
+      update: function(el) {
+        el.focus();
+      }
     }
   },
   methods: {
@@ -31,7 +38,10 @@ export default {
       if(!this.updating) {
         this.UPDATING();
         this.editing = false
-        this.UPDATE_CARD({ id :this.card.id, list_id: this.card.list_id, order: this.card.order, name: e.target.value });
+        this.UPDATE_CARD({ id :this.card.id,
+                           list_id: this.card.list_id,
+                           order: this.card.order,
+                           name: e.target.value });
         if(e.type === 'blur') this.DONE_UPDATE();
       }else{
         this.DONE_UPDATE();

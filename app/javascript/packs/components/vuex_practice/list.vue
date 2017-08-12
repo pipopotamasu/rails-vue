@@ -2,7 +2,7 @@
     <div class="col-sm-2">
       <div class="panel panel-default">
         <div class="panel-heading strong">
-          <input v-show="editing" @blur="doneEdit" @keyup.enter="doneEdit" type="text" size="16" :value="list.title">
+          <input v-show="editing" @blur="doneEdit" v-focus @keyup.enter="doneEdit" type="text" size="16" :value="list.title">
           <span v-show="!editing" @click="onEditing">{{ list.title }}</span>
           <i v-show="!editing" @click="DELETE_LIST(list)" class="glyphicon glyphicon-trash pull-right delete-list"></i>
         </div>
@@ -40,6 +40,13 @@ export default {
     DraftCard,
     Card,
     Draggable
+  },
+  directives: {
+    focus: {
+      update: function(el) {
+        el.focus();
+      }
+    }
   },
   methods: {
     ...mapActions([
