@@ -1,6 +1,8 @@
 // Karma configuration
 // Generated on Mon Aug 28 2017 17:07:36 GMT+0900 (JST)
 
+var webpackConf = require('./config/webpack/test.js')
+
 module.exports = function(config) {
   config.set({
 
@@ -16,10 +18,15 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'app/javascript/packs/components/**/*.js',
-      //'app/javascript/packs/components/**/*.vue',
+      // 'app/javascript/packs/components/**/*.vue',
       'test/javascript/**/*_spec.js',
     ],
 
+    webpack: webpackConf,
+
+    webpackMiddleware: {
+      noInfo: true,
+    },
 
     // list of files to exclude
     exclude: [
