@@ -2,7 +2,7 @@
   "name": "rails-vue",
   "private": true,
   "scripts": {
-    "test": "karma start"
+    "test": "NODE_ENV=test karma start"
   },
   "dependencies": {
     "axios": "^0.16.2",

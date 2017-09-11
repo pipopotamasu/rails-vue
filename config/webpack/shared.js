@@ -40,7 +40,7 @@ module.exports = {
     new ExtractTextPlugin(env.NODE_ENV === 'production' ? '[name]-[hash].css' : '[name].css'),
     new ManifestPlugin({
       publicPath: output.publicPath,
-      writeToFileEmit: env.NODE_ENV !== undefined
+      writeToFileEmit: env.NODE_ENV !== 'test'
     })
   ],
 
