@@ -25,7 +25,7 @@ describe('todo.vue', () => {
     assert(wrapper.find('span')[0].text() === '[×]');
   });
 
-  it('v-vind', () => {
+  it('render v-vind', () => {
     assert(wrapper.find('input')[0].getAttribute('id') === 'todo-1');
     assert(wrapper.find('label')[0].getAttribute('for') === 'todo-1');
   })
