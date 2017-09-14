@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     addTodo: function() {
-      if(this.input == 0) return false;
+      if(this.input == '') return false;
       this.createTodo(this.input).then(() => {
         this.fetchData();
       });
@@ -64,6 +64,7 @@ export default {
       axios.get('/todos/all').then((response) => {
         self.todos = response.data
       }).catch((e) => {
+        // console.log(e);
       });
     },
     sorted: function() {

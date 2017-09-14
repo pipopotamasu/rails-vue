@@ -40,8 +40,26 @@ describe('todo_app.vue', () => {
       });
 
       it('render 2 lists', () => {
-        console.log(wrapper.find('li').length);
         assert(wrapper.find('li').length === 2);
+      });
+    });
+
+    describe('addTodo()', () => {
+      describe('In case of input value is blank', () => {
+        it('createTodo do not call.', (done)=> {
+
+        });
+      });
+
+      describe('In case of input value is not blank ', () => {
+        it('createTodo() call once.', (done)=> {
+        });
+
+        it('fetchData() call once.', (done)=> {
+        });
+
+        it('initialize input value.', (done)=> {
+        });
       });
     });
   });

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-//import axios from 'axios'
+import axios from 'axios'
 
 // set csrf token by getting that from dom.
 if (document.getElementsByName('csrf-token')[0]) {
