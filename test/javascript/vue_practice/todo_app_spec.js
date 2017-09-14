@@ -7,31 +7,42 @@ import Promise from 'bluebird';
 
 describe('todo_app.vue', () => {
   let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(TodoApp);
+  before(() => {
+    wrapper = mount(TodoApp);
   });
 
   it('render elements', () => {
     assert(wrapper.contains('input') === true);
   })
 
-  describe('fetchData()', () => {
-    it('fetch via api and assign data', (done) => {
-      let todos = [
+  describe('created', () => {
+    let todos, resolved, stub;
+    before(() => {
+      todos = [
         { id: 1, body: 'test1', checked: false },
         { id: 2, body: 'test2', checked: false },
       ];
 
-      let resolved = new Promise.resolve({
+      resolved = new Promise.resolve({
         data: todos
       });
 
-      let stub = sinon.stub(axios, 'get').returns(resolved);
+      stub = sinon.stub(axios, 'get').returns(resolved);
       wrapper.vm.fetchData();
-      resolved.then(() => {
-        assert(wrapper.vm.todos === todos);
-        done();
-      }).catch(done);
+    });
+
+    describe('fetchData()', () => {
+      it('fetched data is assigned to data object.', (done)=> {
+        resolved.then(() => {
+          assert(wrapper.vm.todos === todos);
+          done();
+        }).catch(done);
+      });
+
+      it('render 2 lists', () => {
+        console.log(wrapper.find('li').length);
+        assert(wrapper.find('li').length === 2);
+      });
     });
   });
 
