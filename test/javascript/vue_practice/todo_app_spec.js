@@ -31,6 +31,16 @@ describe('todo_app.vue', () => {
       wrapper.vm.fetchData();
     });
 
+    describe('render input value', () => {
+      before(() => {
+        wrapper.setData( { input: 'test' } );
+      });
+
+      it('data is rendered on input box.', () => {
+        assert(wrapper.find('input')[0].value() === 'test');
+      });
+    });
+
     describe('fetchData()', () => {
       it('fetched data is assigned to data object.', (done)=> {
         resolved.then(() => {
@@ -45,20 +55,42 @@ describe('todo_app.vue', () => {
     });
 
     describe('addTodo()', () => {
-      describe('In case of input value is blank', () => {
-        it('createTodo do not call.', (done)=> {
+      beforeEach(() => {
+        sinon.spy(wrapper.vm, "createTodo");
+        sinon.spy(wrapper.vm, "fetchData");
+        wrapper.find('button')[0].trigger('click')
+        // wrapper.vm.addTodo();
+      });
 
+      afterEach(() => {
+        wrapper.vm.createTodo.restore();
+        wrapper.vm.fetchData.restore();
+      });
+
+      describe('In case of input value is blank', () => {
+        before(() => {
+          wrapper.setData( { input: '' } );
+        });
+
+        it('createTodo do not call.', (done)=> {
+          assert(wrapper.vm.createTodo.notCalled === true);
+          done();
         });
       });
 
       describe('In case of input value is not blank ', () => {
-        it('createTodo() call once.', (done)=> {
+        before(() => {
+          wrapper.setData( { input: 'test' } );
         });
 
-        it('fetchData() call once.', (done)=> {
+        it('createTodo() call once.', (done)=> {
+          assert(wrapper.vm.createTodo.calledOnce === true);
+          done();
         });
 
         it('initialize input value.', (done)=> {
+          assert(wrapper.vm.input === '');
+          done();
         });
       });
     });
