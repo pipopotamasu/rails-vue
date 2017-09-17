@@ -18,9 +18,11 @@ import axios from 'axios'
 import Todo from './todo.vue'
 
 // set csrf token by getting that from dom.
-let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
-axios.defaults.headers.common['X-CSRF-Token'] = token
-axios.defaults.headers.common['Accept'] = 'application/json'
+if (document.getElementsByName('csrf-token')[0]) {
+  let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
+  axios.defaults.headers.common['X-CSRF-Token'] = token
+  axios.defaults.headers.common['Accept'] = 'application/json'
+}
 
 export default {
   // template: '#todo-app',
@@ -42,7 +44,7 @@ export default {
   },
   methods: {
     addTodo: function() {
-      if(this.input == 0) return false;
+      if(this.input == '') return false;
       this.createTodo(this.input).then(() => {
         this.fetchData();
       });
@@ -62,7 +64,7 @@ export default {
       axios.get('/todos/all').then((response) => {
         self.todos = response.data
       }).catch((e) => {
-        console.log(e)
+        // console.log(e);
       });
     },
     sorted: function() {

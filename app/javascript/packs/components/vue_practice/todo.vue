@@ -1,7 +1,7 @@
 <!-- demo root element -->
 <template>
   <li class="list-group-item">
-    <input v-model="todo.checked"type="checkbox" v-bind:id="'todo-' + todo.id" />
+    <input v-model="todo.checked" type="checkbox" v-bind:id="'todo-' + todo.id" />
     <label v-bind:class="{ done: todo.checked }" v-bind:for="'todo-' + todo.id">{{ todo.body }}</label>
     <span v-on:click="deleteTodo(todo.id)" class="delete">[×]</span>
   </li>
@@ -11,9 +11,11 @@
 import axios from 'axios'
 
 // set csrf token by getting that from dom.
-let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
-axios.defaults.headers.common['X-CSRF-Token'] = token
-axios.defaults.headers.common['Accept'] = 'application/json'
+if (document.getElementsByName('csrf-token')[0]) {
+  let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
+  axios.defaults.headers.common['X-CSRF-Token'] = token
+  axios.defaults.headers.common['Accept'] = 'application/json'
+}
 
 export default {
   // template: '#todo-app',
