@@ -1,7 +1,10 @@
 import assert from 'power-assert'
 import store from '../../../../../app/javascript/packs/store/modules/vuex_practice/counter'
+import sinon from 'sinon'
 
-let mutations = store.mutations;
+const mutations = store.mutations;
+const actions = store.actions;
+
 
 describe('store', () => {
   describe('mutations', () => {
@@ -9,7 +12,6 @@ describe('store', () => {
       // mock state
       const state = { count: 0 }
       mutations.INCREMENT(state);
-      // 結果を検証する
       assert(state.count === 1)
     });
 
@@ -17,7 +19,6 @@ describe('store', () => {
       // mock state
       const state = { count: 1 }
       mutations.DECREMENT(state);
-      // 結果を検証する
       assert(state.count === 0)
     });
 
@@ -25,8 +26,42 @@ describe('store', () => {
       // mock state
       const state = { count: 2 }
       mutations.RESET(state);
-      // 結果を検証する
       assert(state.count === 0)
+    });
+  });
+
+  describe('actions', () => {
+    it('INCREMENT', () => {
+      let context = {
+        commit: sinon.stub()
+      }
+
+      const state = { count: 0 };
+      const expectedType = { type: 'INCREMENT' };
+      actions.INCREMENT(context);
+      assert(context.commit.withArgs(expectedType).callCount === 1);
+    });
+
+    it('DECREMENT', () => {
+      let context = {
+        commit: sinon.stub()
+      }
+
+      const state = { count: 0 };
+      const expectedType = { type: 'DECREMENT' };
+      actions.DECREMENT(context);
+      assert(context.commit.withArgs(expectedType).callCount === 1);
+    });
+
+    it('RESET', () => {
+      let context = {
+        commit: sinon.stub()
+      }
+
+      const state = { count: 0 };
+      const expectedType = { type: 'RESET' };
+      actions.RESET(context);
+      assert(context.commit.withArgs(expectedType).callCount === 1);
     });
   });
 })
