@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import { mount } from 'avoriaz'
 import assert from 'power-assert'
 import sinon from 'sinon'
-import Counter from '../../../app/javascript/packs/components/vuex_practice/counter.vue'
+import Counter from '../../../../app/javascript/packs/components/vuex_practice/counter.vue'
 
 Vue.use(Vuex)
 

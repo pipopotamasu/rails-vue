@@ -1,4 +1,4 @@
-import Todo from '../../../app/javascript/packs/components/vue_practice/todo.vue'
+import Todo from '../../../../app/javascript/packs/components/vue_practice/todo.vue'
 import { mount } from 'avoriaz'
 import assert from 'power-assert'
 import sinon from 'sinon';

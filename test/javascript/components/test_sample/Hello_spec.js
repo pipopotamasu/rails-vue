@@ -1,4 +1,4 @@
-import Hello from '../../../app/javascript/packs/components/test_sample/Hello.vue'
+import Hello from '../../../../app/javascript/packs/components/test_sample/Hello.vue'
 import { mount } from 'avoriaz'
 import assert from 'power-assert'
 

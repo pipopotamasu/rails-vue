@@ -1,4 +1,4 @@
-import TodoApp from '../../../app/javascript/packs/components/vue_practice/todo_app.vue'
+import TodoApp from '../../../../app/javascript/packs/components/vue_practice/todo_app.vue'
 import { mount, shallow } from 'avoriaz'
 import assert from 'power-assert'
 import axios from 'axios';
