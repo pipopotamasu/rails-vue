@@ -6,7 +6,6 @@ export default {
   },
   actions: {
     [types.INCREMENT] ({ commit }){
-      console.log(1111111); 
       commit({
         type: types.INCREMENT
       });
