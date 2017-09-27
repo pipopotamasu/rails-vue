@@ -1,5 +1,6 @@
 import * as types from '../../actions/trello-mutation-types'
 import axios from 'axios'
+import Vue from 'vue'
 
 // set csrf token by getting that from dom.
 let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
@@ -144,7 +145,7 @@ export default {
   },
   mutations: {
     [types.ADD_LIST] (state, payload) {
-      state.lists.push(payload.list);
+      Vue.set(state.lists, payload.list.order, payload.list);
     },
     [types.SORT_LIST_ORDER] (state, payload) {
       state.lists.forEach((list, i) => {
@@ -170,10 +171,10 @@ export default {
       // don't assign object to array like below
       // ex) state.lists[i] = payload.data
       // components life cycle do not work if you do so.
-      state.lists.splice(payload.list.order, 1, payload.list);
+      Vue.set(state.lists, payload.list.order, payload.list);
     },
     [types.UPDATE_CARD] (state, payload) {
-      state.lists[payload.list_index].cards.splice(payload.card.order, 1, payload.card);
+      Vue.set(state.lists[payload.list_index].cards, payload.card.order, payload.card);
     },
     [types.DELETE_CARD] (state, payload) {
       state.lists[payload.list_index].cards.splice(payload.card.order, 1);
@@ -184,7 +185,7 @@ export default {
       });
     },
     [types.ADD_CARD] (state, payload) {
-      state.lists[payload.list_index].cards.push(payload.card);
+      Vue.set(state.lists[payload.list_index].cards, payload.card.order, payload.card);
     },
     [types.UPDATING] (state, payload) {
       state.updating = true;
