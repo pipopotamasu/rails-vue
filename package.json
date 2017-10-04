@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "avoriaz": "^4.1.0",
+    "babel-plugin-espower": "^2.3.2",
     "bluebird": "^3.5.0",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
