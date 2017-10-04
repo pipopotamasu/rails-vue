@@ -2,9 +2,11 @@ import * as types from '../../actions/trello-mutation-types'
 import axios from 'axios'
 
 // set csrf token by getting that from dom.
-let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
-axios.defaults.headers.common['X-CSRF-Token'] = token
-axios.defaults.headers.common['Accept'] = 'application/json'
+if(document.getElementsByName('csrf-token')[0]) {
+  let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
+  axios.defaults.headers.common['X-CSRF-Token'] = token
+  axios.defaults.headers.common['Accept'] = 'application/json'
+}
 
 export default {
   state: {
