@@ -1,7 +1,7 @@
 import assert from 'power-assert'
 import mutations from '../../../../app/javascript/packs/store/mutations/trello'
 
-describe('trello store', () => {
+describe('Trello', () => {
   describe('mutations', () => {
     it('ADD_LIST', () => {
       // mock state
@@ -130,7 +130,7 @@ describe('trello store', () => {
       assert.deepEqual(state.lists[0].cards, expected_cards);
     });
   });
-})
+});
 
 function getState() {
   return {
