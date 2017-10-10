@@ -71,15 +71,41 @@ describe('trello store', () => {
       mutations.SORT_LIST_ORDER(state);
       assert.deepEqual(state.lists, expected_list);
     });
-    //
-    // it('RESET', () => {
-    //   // mock state
-    //   const state = { count: 2 }
-    //   mutations.RESET(state);
-    //   assert(state.count === 0)
-    // });
+
+    it('DELETE_LIST', () => {
+      // mock state
+      const state = getState();
+
+      mutations.ADD_LIST(state, { list });
+      assert(state.lists[0] === list);
+    });
   });
 
   // describe('actions', () => {
   // });
 })
+
+function getState() {
+  return {
+    lists: [
+      {
+        id: 1,
+        order: 0,
+        title: 'test1',
+        cards: []
+      },
+      {
+        id: 2,
+        order: 1,
+        title: 'test2',
+        cards: []
+      },
+      {
+        id: 3,
+        order: 2,
+        title: 'test3',
+        cards: []
+      }
+    ]
+  }
+}
