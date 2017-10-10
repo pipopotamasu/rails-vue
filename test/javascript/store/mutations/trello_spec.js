@@ -1,10 +1,5 @@
 import assert from 'power-assert'
-import store from '../../../../../app/javascript/packs/store/modules/vuex_practice/trello'
-import sinon from 'sinon'
-
-const mutations = store.mutations;
-const actions = store.actions;
-
+import mutations from '../../../../app/javascript/packs/store/mutations/trello'
 
 describe('trello store', () => {
   describe('mutations', () => {
