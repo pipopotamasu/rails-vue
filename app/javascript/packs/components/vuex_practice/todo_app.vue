@@ -12,7 +12,7 @@
 
 <script>
 import { mapState,mapActions,mapGetters } from 'vuex'
-import * as types from '../../store/actions/todo-mutation-types';
+import * as types from '../../store/mutation_types/todo';
 import Todo from './todo.vue'
 
 export default {

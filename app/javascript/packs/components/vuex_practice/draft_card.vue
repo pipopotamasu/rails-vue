@@ -4,7 +4,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import * as types from '../../store/actions/trello-mutation-types';
+import * as types from '../../store/mutation_types/trello';
 
 export default {
   props: ['list'],

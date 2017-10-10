@@ -23,7 +23,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import * as types from '../../store/actions/trello-mutation-types';
+import * as types from '../../store/mutation_types/trello';
 import DraftCard from './draft_card.vue'
 import Card from './card.vue'
 import Draggable from 'vuedraggable'

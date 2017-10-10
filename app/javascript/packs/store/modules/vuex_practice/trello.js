@@ -1,4 +1,4 @@
-import * as types from '../../actions/trello-mutation-types'
+import * as types from '../../mutation_types/trello'
 import mutations from '../../mutations/trello'
 import axios from 'axios'
 import Vue from 'vue'

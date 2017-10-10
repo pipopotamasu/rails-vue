@@ -1,4 +1,4 @@
-import * as types from '../../actions/counter-mutation-types'
+import * as types from '../../mutation_types/counter'
 
 export default {
   state: {

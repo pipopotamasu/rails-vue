@@ -1,4 +1,4 @@
-import * as types from '../../actions/todo-mutation-types'
+import * as types from '../../mutation_types/todo'
 import axios from 'axios'
 
 // set csrf token by getting that from dom.
