@@ -3,7 +3,7 @@ import getters from '../../../../app/javascript/packs/store/getters/trello'
 
 describe('Trello', () => {
   describe('getters', () => {
-    it('nextIdList return 3', () => {
+    it('nextIdList returns 3', () => {
       const state = {
         lists: [
           { id: 1 },
@@ -14,7 +14,7 @@ describe('Trello', () => {
       assert(getters.nextListId(state, getters) === 3);
     });
 
-    it('nextCardOrder return 2', () => {
+    it('nextCardOrder returns 2', () => {
       const state = {
         lists: [
           {
