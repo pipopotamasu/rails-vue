@@ -61,8 +61,9 @@ describe('card.vue', () => {
         const input = wrapper.first('input');
         input.trigger('blur')
       });
+
       it('UPDATING is called once.', () => {
-        assert(actions.UPDATING.calledOnce === true)
+        assert(actions.UPDATING.calledOnce === true);
       });
 
       it('editing is false', () => {
@@ -70,16 +71,16 @@ describe('card.vue', () => {
       });
 
       it('DONE_UPDATE is called once.', () => {
-        assert(actions.DONE_UPDATE.calledOnce === true)
+        assert(actions.DONE_UPDATE.calledOnce === true);
       });
     });
 
     describe('when keyup.enter', () => {
       beforeEach(() => {
         const input = wrapper.first('input');
-        input.trigger('keyup.enter')
+        input.trigger('keyup.enter');
       });
-      
+
       it('UPDATING is called once.', () => {
         assert(actions.UPDATING.calledOnce === true)
       });
