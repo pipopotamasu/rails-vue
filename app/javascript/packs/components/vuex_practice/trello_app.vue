@@ -9,7 +9,7 @@
 
 <script>
 import { mapState,mapActions,mapGetters } from 'vuex'
-import * as types from '../../store/actions/trello-mutation-types';
+import * as types from '../../store/mutation_types/trello';
 import List from './list.vue'
 import Buttons from './buttons.vue'
 import Draggable from 'vuedraggable'

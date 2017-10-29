@@ -24,7 +24,7 @@ describe('counter.vue', () => {
     })
 
     wrapper = mount(Counter, { store })
-  })
+  });
 
   it('render elements', () => {
     assert(wrapper.contains('p') === true);

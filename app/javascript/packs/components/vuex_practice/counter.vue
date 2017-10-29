@@ -11,7 +11,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import * as types from '../../store/actions/counter-mutation-types';
+import * as types from '../../store/mutation_types/counter';
 
 export default {
   computed: {

@@ -7,7 +7,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import * as types from '../../store/actions/todo-mutation-types';
+import * as types from '../../store/mutation_types/todo';
 
 export default {
   props: ['todo'],
