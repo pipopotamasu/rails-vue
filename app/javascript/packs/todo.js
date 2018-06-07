@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import TodoApp from './components/vue_practice/todo_app.vue'
+import TodoApp from '../components/vue_practice/todo_app.vue'
 import Sortable from 'vue-sortable'
 
 
